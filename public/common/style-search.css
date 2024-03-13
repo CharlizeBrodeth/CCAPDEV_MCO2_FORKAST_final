@@ -1,0 +1,238 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f4ff;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: #39A7FF;
+    color: #fff;
+    padding: 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    height: 80px;
+}
+
+.search-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin-bottom: 100px;
+    background-color: #fff;
+}
+
+.search_button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.search_button:hover {
+    background-color: #449D44;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background-color: #39a7ff;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+    margin-left: 45%;
+}
+
+/**create review style**/
+.review_body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding-top: 120px;
+    background-color: #87C4FF;
+}
+
+.top_header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #e0f4ff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.logo_style {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.back_button, .submit_button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-family: Arial;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.back_button:hover, .submit_button:hover {
+    background-color: #449D44;
+}
+
+.content_area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+.review_section {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.image_section {
+    flex-basis: 250px;
+    background-color: #ffeed9;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.image_resto {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.text_review_title, .text_format {
+    color: #39a7ff;
+    font-weight: bold;
+}
+
+.form_group {
+    margin-bottom: 20px;
+}
+
+.input_box_style, textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.star-rating {
+    font-size: 0; 
+    direction: rtl; 
+}
+
+.star-rating input[type="radio"] {
+    display: none; 
+}
+
+.star-rating label {
+    font-size: 2rem; 
+    color: #ddd; 
+    padding: 0 5px; 
+    cursor: pointer;
+    display: inline-block;
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+    color: #f5eb3b; 
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:focus + label {
+    color: #f5eb3b; 
+}
+
+/**end of review styles**/
+
+@media (max-width: 768px) {
+    .header-content, .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .search-box {
+        width: auto; 
+    }
+
+    .content_area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .review_section, .image_section {
+        width: 100%;
+    }
+}
+

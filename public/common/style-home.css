@@ -1,0 +1,131 @@
+/* Body */
+body {
+    background-color: #FFEED9;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.logo-container .logo, .profile-nav .profile-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.profile-nav-ex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.content_title{
+    font-size: 20px;
+    color: navy;
+}
+
+.action-section .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #449D44;
+}
+
+/* Restaurants Overview */
+.restaurant-logo{
+    width: 250px;
+    height: 250px;
+}
+.restaurants-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.restaurant-item {
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px; 
+}
+
+.restaurant-item img {
+    width: 100%; 
+    border-radius: 4px;
+}
+
+.restaurant-item p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.search-container-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-box-header {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: auto; 
+}
+
+.search-button-header {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .restaurants-container {
+        flex-direction: column;
+    }
+
+    .site-header {
+        flex-direction: column;
+    }
+
+    .profile-nav .profile-image {
+        margin-top: 10px;
+    }
+
+    .search-container-header {
+        width: 100%; 
+        justify-content: space-between;
+    }
+    
+    .search-box-header {
+        flex-grow: 1; 
+    }    
+}
