@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "65ee8897c523ab9751ad132a"
+  },
+  "fam_name": "Johnson",
+  "first_name": "Emily",
+  "user_name": "EmilyJohnson",
+  "screen_name": "Emily",
+  "bday": {
+    "$date": "2001-02-03T00:00:00.000Z"
+  },
+  "email": "emilyjohnson@gmail.com",
+  "password": "JohnsonBabyPowder!"
+},
+{
+  "_id": {
+    "$oid": "65ee8997c523ab9751ad132c"
+  },
+  "fam_name": "Williams",
+  "first_name": "Michael",
+  "user_name": "MichaelWW",
+  "screen_name": "Michael Williams",
+  "bday": {
+    "$date": "2002-03-22T00:00:00.000Z"
+  },
+  "email": "michaelwilliams@gmail.com",
+  "password": "williamsYumYum*"
+},
+{
+  "_id": {
+    "$oid": "65ee8a34c523ab9751ad132e"
+  },
+  "fam_name": "Rodriguez",
+  "first_name": "Olivia",
+  "user_name": "foodLover25",
+  "screen_name": "Olivia",
+  "bday": {
+    "$date": "2003-02-20T00:00:00.000Z"
+  },
+  "email": "oliviarodriguez20@gmail.com",
+  "password": "Olivias_G@rden"
+},
+{
+  "_id": {
+    "$oid": "65ee8b55c523ab9751ad1334"
+  },
+  "fam_name": "Brown",
+  "first_name": "Sarah",
+  "user_name": "SarahB",
+  "screen_name": "Sarah Brown",
+  "bday": {
+    "$date": "2001-04-06T00:00:00.000Z"
+  },
+  "email": "sarahbrown@gmail.com",
+  "password": "BrowniesniS@r@h"
+},
+{
+  "_id": {
+    "$oid": "65ee8c39c523ab9751ad1336"
+  },
+  "fam_name": "Ramirez",
+  "first_name": "Elijah",
+  "user_name": "JajaRamirezzz",
+  "screen_name": "Jaja",
+  "bday": {
+    "$date": "1996-06-15T00:00:00.000Z"
+  },
+  "email": "elijahramirez15@gmail.com",
+  "password": "TigerWinxRaaawr!"
+}]

@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c87636f"
+  },
+  "resto_name": "Sandwhich Corner",
+  "resto_image": "https://logopond.com/logos/9b4a118578d898eb07ce8b81f0254bae.png"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c87636e"
+  },
+  "resto_name": "Happy and Healthy",
+  "resto_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoonBppbN1isocwh5NFeu_ckIFe8J3IU6I39aL7V071nykNsDCqvUSYfQ6qCUQ4xLeFKc&usqp=CAU"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c87636d"
+  },
+  "resto_name": "Colonel's Curry",
+  "resto_image": "https://img.restaurantguru.com/re63-Colonels-Curry-design.jpg"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c876370"
+  },
+  "resto_name": "Potato Corner",
+  "resto_image": "https://media.karousell.com/media/photos/products/2021/5/31/potato_corner_food_cart_1622430635_a7e7e82c"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c876373"
+  },
+  "resto_name": "The Hungry Pita",
+  "resto_image": "https://img1.wsimg.com/isteam/ip/f8b98fc7-f4d0-4d09-a80b-7bb52cbc1149/blob-0002.png/:/cr=t:0%25,l:21.88%25,w:56.25%25,h:100%25"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c876374"
+  },
+  "resto_name": "Infinitea",
+  "resto_image": "https://foodtripdumaguete.files.wordpress.com/2015/10/infinitea-6.jpg"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c876375"
+  },
+  "resto_name": "de Original Jamaican",
+  "resto_image": "https://s3-ap-southeast-1.amazonaws.com/s3.loopme.ph/img/newos/brands/2x/jamaican-pattie.png"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c876371"
+  },
+  "resto_name": "Bowl'd",
+  "resto_image": "https://menuph.com/wp-content/uploads/2023/08/Bowld-cocobowl-1024x1024.jpg"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c876372"
+  },
+  "resto_name": "BlackStem",
+  "resto_image": "https://images.deliveryhero.io/image/fd-ph/Products/25808824.jpg?width=%s"
+},
+{
+  "_id": {
+    "$oid": "65eecb0a03f41bdf7c876376"
+  },
+  "resto_name": "The Beef",
+  "resto_image": "https://i.postimg.cc/PrVZpWK9/430107568-1137405053922595-3818798121839555347-n.jpg"
+}]
