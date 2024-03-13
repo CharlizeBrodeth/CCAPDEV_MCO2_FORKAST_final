@@ -447,4 +447,54 @@
   "review_title": "Unbeatable Beef Dishes at The Beef",
   "review_desc": "The Beef offers an exceptional array of beef dishes, with the gyudon and salpicao standing out for their succulence and flavor. The welcoming staff and the quick service make it a pleasure to dine here, ensuring that every visit is as enjoyable as the food.",
   "rating": 5
+},
+{
+  "_id": {
+    "$oid": "65f1ccd6347f9a9b34160cfd"
+  },
+  "user_name": "foodLover25",
+  "resto_name": "Sandwhich Corner",
+  "review_title": "Tasty sandwiches",
+  "review_desc": "Sandwich Corner never disappoints! Their sandwiches are always fresh and flavorful. Highly recommend the roast beef sandwich!",
+  "rating": 5
+},
+{
+  "_id": {
+    "$oid": "65f1ccd6347f9a9b34160cfc"
+  },
+  "user_name": "MichaelWW",
+  "resto_name": "Sandwhich Corner",
+  "review_title": "Delicious sandwiches!",
+  "review_desc": "I recently visited Sandwich Corner and tried their amazing sandwiches. Highly recommended!",
+  "rating": 5
+},
+{
+  "_id": {
+    "$oid": "65f1ccd6347f9a9b34160d00"
+  },
+  "user_name": "JajaRamirezzz",
+  "resto_name": "Happy and Healthy",
+  "review_title": "Fantastic Vegan Options!",
+  "review_desc": "As a vegan, I'm always on the lookout for restaurants that offer delicious plant-based options. Happy and Healthy exceeded my expectations with their wide variety of vegan dishes. From their hearty salads to flavorful tofu bowls, every bite was a delight. The staff was friendly, and the ambiance was cozy. Highly recommend!",
+  "rating": 5
+},
+{
+  "_id": {
+    "$oid": "65f1ccd6347f9a9b34160cfe"
+  },
+  "user_name": "MichaelWW",
+  "resto_name": "Happy and Healthy",
+  "review_title": "Delicious Wraps!",
+  "review_desc": "Had the pleasure of trying the wraps at Happy and Healthy, and they were fantastic! The veggies were crisp, the sauces were flavorful, and the wraps were perfectly toasted. I appreciate that they offer both vegetarian and meat options, catering to different preferences. Great spot for a quick and healthy meal!",
+  "rating": 5
+},
+{
+  "_id": {
+    "$oid": "65f1ccd6347f9a9b34160cff"
+  },
+  "user_name": "foodLover25",
+  "resto_name": "Happy and Healthy",
+  "review_title": "Healthy Lunch Spot",
+  "review_desc": "Happy and Healthy is my go-to spot for a healthy lunch. Their salads are always fresh and delicious, and I love the customizable options. The atmosphere is bright and cheerful, making it a pleasant place to dine. Plus, their prices are very reasonable for the quality of food they serve.",
+  "rating": 5
 }]
