@@ -1,0 +1,41 @@
+ <header class="site-header">
+        <div class="logo-container">
+            <a href="/home">
+                <img src="forkast_logo.png" alt="ForKast Logo" class="logo">
+            </a>
+        </div>
+        <div class="action-section">
+            <a href = "/search">
+                <button class="btn create-review">Create Review</button>
+            </a>
+        </div>
+        <div class="search-container-header">
+            <input type="search" class="search-box-header" placeholder="Search...">
+            <a href="/home"> <!--Ajax part-->
+            <button class="search-button-header">Search</button>
+            </a>
+        </div>
+        <nav class="profile-nav profile-nav-ex">
+            <p class="main-content" name="screen_name">{{screen_name}}</p>
+            <a href="/profile/{{screen_name}}">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture" class="profile-image"/>
+            </a>
+        </nav>
+    </header>
+    <main class="main-content">
+        <section class="action-section">
+           <h1 class="content_title">Click on a Restaurant to see its Reviews</h1>
+        </section>
+        <section class="restaurants-overview">
+            <div class="restaurants-container">
+                {{#each resto_info}}
+                <div class="restaurant-item">
+                    <a href="/review_page/{{resto_name}}">
+                        <img src="{{resto_image}}" alt="{{resto_name}}_Logo" class="restaurant-logo"/> 
+                        <p>{{resto_name}}</p>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+    </main>

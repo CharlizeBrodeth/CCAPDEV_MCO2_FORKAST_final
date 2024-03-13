@@ -1,0 +1,51 @@
+  <header class="site-header">
+        <div class="logo-container">
+            <a href="mco1home.html">
+                <img src="forkast_logo.png" alt="ForKast Logo" class="logo">
+            </a>
+        </div>
+    
+        <nav class="profile-nav profile-nav-ex">
+            <p class="main-content">{{screen_name}}</p>
+            <a href="/profile/{{screen_name}}">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture" class="profile-image"/>
+            </a>
+        </nav>
+    </header>
+ <div class="main-container">
+        <aside class="image_section">
+            <img class="image_resto" src="{{resto_image}}" alt="{{restoName}} Restaurant">
+            <div class="text_format">{{restoName}}</div>
+
+            <a href ="/home">
+                <button class="back-btn">Go back to homepage</button>
+                </a>
+        </aside>
+        <div class="reviews-container">
+            <div class="review-box review-box-title">SEE REVIEWS</div>
+            <!-- Repeat this structure for each review -->
+            {{#each reviews_list}}
+            <div class="review-box-whole">
+                <div class="review-box">
+                    <img class="review-box-image" src="https://surgassociates.com/wp-content/uploads/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg" alt="{{user_name}}">
+                    <div class="review-des">
+                        <div class="review-text review-text-des">from {{user_name}}</div>
+                        <div class="review-text">{{review_title}}</div>
+                        <div class="review-text review-text-des">{{review_desc}}</div>
+                    </div>
+                    <button class="up-vote-btn" title="Upvote Review">👍</button>
+                    <button class="down-vote-btn" title="Downvote Review">👎</button>
+                    <div class="star-rating-display">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span> 
+                    </div>
+                </div>
+
+        </div>
+        {{/each}}
+    </div>
+    
+    

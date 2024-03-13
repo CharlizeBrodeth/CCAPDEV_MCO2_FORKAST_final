@@ -1,0 +1,51 @@
+<body>
+    <div class="register-container">
+        <h1 class="register-title">REGISTER</h1>
+        <form class="register-form" action="create_user" method="post">
+            <div class="form-group">
+                <label for="family-name">Family Name *</label>
+                <input type="text" name="fam_name" placeholder="Family Name" required>
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name *</label>
+                <input type="text" name="first_name" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" name="user_name" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <label for="screen-name">Screen Name *</label>
+                <input type="text" name="screen_name" placeholder="Screen Name" required>
+            </div>
+            <div class="form-group">
+                <label for="birth-date">Birth Date *</label>
+                <input type="date" name="bday" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group form-group-checkbox">
+                <input type="checkbox" id="user-agreement" required>
+                <label for="user-agreement" class="user-agreement-label">
+                    I authorize the ForKast to receive and utilize my information solely for the creation of my account.
+                    The data privacy act's clauses and agreements have been thoroughly reviewed.
+                </label>
+            </div>
+            <div class="form-group form-group-checkbox">
+                <input type="checkbox" id="user-agreement" required>
+                <label for="user-agreement" class="user-agreement-label">
+                    I accept that the information presented herein is truthful and legitimate. Disciplinary action will be
+                    taken in the event that the information supplied is false.
+                </label>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="create-btn" value="submit_btn">Create</button>
+            </div>
+        </form>
+    </div>

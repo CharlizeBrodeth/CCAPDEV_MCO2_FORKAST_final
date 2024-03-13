@@ -1,0 +1,48 @@
+ <header>
+        <div class="header-content">
+            <img src="forkast_logo.png" alt="Logo" class="logo">
+        </div>
+    </header>
+    <div class="main-container">
+       
+        <div class="search-container">
+            <div class="text_review_title">Choose Restaurant to Review</div>
+            <select class="search-box" id="searchFilter" required>
+                {{#each restos}}
+                <option value="{{resto_name}}"> {{resto_name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+          <section class="review_section">
+            <h2 class="text_review_title">Write Your Review!</h2>
+            <form>
+                <div class="form_group">
+                    <label for="review_title" class="text_review_parts">Title:</label>
+                    <input class="input_box_style" type="text" id="review_title" placeholder="Enter title of review here...">
+                </div>
+                <div class="form_group">
+                    <label for="review_desc" class="text_review_parts">Description:</label>
+                    <textarea id="review_desc" cols="70" rows="10" placeholder="Enter more details here..."></textarea>
+                </div>
+                <div class="form_group rating">
+                    <label class="text_review_parts">Your Rating:</label>
+                    <div class="star-rating">
+                        <input id="star5" name="rating" type="radio" value="5" class="star"/>
+                        <label for="star5" class="star">&#9733;</label>
+                        <input id="star4" name="rating" type="radio" value="4" class="star"/>
+                        <label for="star4" class="star">&#9733;</label>
+                        <input id="star3" name="rating" type="radio" value="3" class="star"/>
+                        <label for="star3" class="star">&#9733;</label>
+                        <input id="star2" name="rating" type="radio" value="2" class="star"/>
+                        <label for="star2" class="star">&#9733;</label>
+                        <input id="star1" name="rating" type="radio" value="1" class="star"/>
+                        <label for="star1" class="star">&#9733;</label>
+                    </div>
+                </div>
+                <button type="submit" class="back_button submit_button">Submit</button>
+            </form>
+        </section>
+    </div>
+
+    <a href="/home"> <button class="back-btn">Back to homepage</button></a>

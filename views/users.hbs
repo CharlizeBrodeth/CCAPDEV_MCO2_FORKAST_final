@@ -1,0 +1,43 @@
+<div class="main-container">
+        <div class="profile-container">
+            <div class="search-container">
+                <input type="text" placeholder="Search" class="search-input"/>
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <!-- Dynamic profile image -->
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture" class="profile-image"/>
+                </div>
+                <!-- Dynamic user details -->
+                <h1 class="profile-name">{{profile_name}}</h1>
+                <p class="profile-handle">{{user_handle}}</p>
+                <p class="profile-bio">{{user_screen}}</p>
+                <div class="profile-actions">
+                    <button class="btn active-status">ACTIVE STATUS</button>
+                    <a href="edit_page.html">
+                        <button class="btn edit-profile">EDIT PROFILE</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-container">
+            <div class="review-box review-box-title">SEE REVIEWS</div>
+            <!-- Dynamic reviews loop -->
+            {{#each user_reviews}}
+            <div class="review-box">
+                <img class="box-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq3HWCE043eXz7M4GSZgbKTIZuD7Ls0Kwt6Q&usqp=CAU" alt="Review Image">
+                <div class="review-des">
+                    <div class="review-text">Restaurant : {{resto_name}}</div>
+                    <div class="review-text">{{review_title}}</div>
+                    <div class="review-text review-text-des">{{review_desc}}</div>
+                </div>
+                <div class="review-btn-form">
+                    <button class="review-edit-btn">Edit</button>
+                    <button class="review-edit-btn">Delete</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <a href="/home"> <button class="back-btn">Back to homepage</button></a>
