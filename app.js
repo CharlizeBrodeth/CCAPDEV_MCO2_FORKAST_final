@@ -1,7 +1,7 @@
 //Forkast server side 
 //Install Command:
 //npm init
-//npm i express express-handlebars body-parser mongoose
+//npm i express express-handlebars body-parser mongoose bcrypt
 
 //Set-up//
 const express = require('express');  
@@ -23,6 +23,9 @@ server.use(express.static('public'));
 //Connect to DB//
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/Forkastdb');
+
+// Password Hashing
+const bcrypt = require('bcrypt');
 
 // import validation helpers
 const {validateEmail, validatePassword, allFieldsProvided} = require('./validationHelpers');
@@ -90,48 +93,59 @@ server.get('/login/', function(req, resp){
 global.loggedInUser = '';
 
 //Accepting login//
-server.post('/check_login', function(req, resp){
-    //get inputs//
-    const searchQuery= {email: req.body.email, password: req.body.password};
-    //find in model//
-    userModel.findOne(searchQuery).then(function(user){
-        
-        console.log('checking if registered user');
-        if(user != undefined && user._id != null){
-            //loading home once user logins//
-            //set screen_name to te global variable//
-            global.loggedInUser = user.screen_name;
-            //get all values in restoModel
-            restoModel.find({}).then(function(restaurant){
-                console.log('Retrieving all documents from restoModel');
-                let restoArray = [];
+server.post('/check_login', async function(req, resp){
+    const { email, password } = req.body;
 
-                for(const item of restaurant){
-                    restoArray.push({
-                        _id: item._id.toString(),
-                        resto_name: item.resto_name,
-                        resto_image: item.resto_image
-                    });
-                }
-
-                resp.render('home',{
-                    layout: 'index-home',
-                    title: 'Forkast Home Page',
-                    resto_info: restoArray,
-                    screen_name: global.loggedInUser
-                });
-            }).catch(errorFn);
-        }
-        else{
-            resp.render('result',{
+    try {
+        // find by email
+        const user = await userModel.findOne({ email: email });
+        if (!user) {
+            return resp.render('result', {
                 layout: 'index',
-                title: 'Result of Action',
-                msg: 'Sorry! wrong Email or Password, please try again',
+                title: 'Login Error',
+                msg: 'Sorry! Wrong email or password, please try again',
                 btn_msg: 'Go back to Login',
                 move_to: 'login'
             });
         }
-    }).catch(errorFn);
+
+        // compare pass and hashed pass
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return resp.render('result', {
+                layout: 'index',
+                title: 'Login Error',
+                msg: 'Sorry! Wrong email or password, please try again',
+                btn_msg: 'Go back to Login',
+                move_to: 'login'
+            });
+        }
+
+        global.loggedInUser = user.screen_name;
+
+        const restaurants = await restoModel.find({});
+        let restoArray = restaurants.map(item => ({
+            _id: item._id.toString(),
+            resto_name: item.resto_name,
+            resto_image: item.resto_image
+        }));
+    
+        resp.render('home',{
+            layout: 'index-home',
+            title: 'Forkast Home Page',
+            resto_info: restoArray,
+            screen_name: global.loggedInUser
+        });
+    } catch (error) {
+        console.error('Login error:', error);
+        resp.render('result', {
+            layout: 'index',
+            title: 'Login Error',
+            msg: 'An error occurred during login. Please try again.',
+            btn_msg: 'Go back to Login',
+            move_to: 'login'
+        });
+    }
 });
 
 
@@ -188,11 +202,26 @@ server.post('/create_user', async function(req, resp){
             move_to: 'register'
         });
     }
+    
+    try {
+        // hash rounds
+        const saltRounds = 10; 
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
-    // checks if all fields are validated
-    const userInstance = new userModel(req.body);
-    // save instance to DB
-    userInstance.save().then(function(user){
+        // creates new used in db
+        const newUser = {
+            fam_name: req.body.fam_name,
+            first_name: req.body.first_name,
+            user_name: req.body.user_name,
+            screen_name: req.body.screen_name,
+            bday: req.body.bday,
+            email: req.body.email,
+            password: hashedPassword // hashed password in db
+        };
+
+        // saves to db
+        await new userModel(newUser).save();
+
         resp.render('result', {
             layout: 'index',
             title: 'Result of Action',
@@ -200,53 +229,39 @@ server.post('/create_user', async function(req, resp){
             btn_msg: 'Proceed to Login',
             move_to: 'login'
         });
-    }).catch(errorFn);
-});
-
-//Render Home page//
-server.get('/home/', function(req, resp){
-    restoModel.find({}).then(function(restaurant){
-        console.log('Retrieving all documents from restoModel');
-        let restoArray = [];
-
-        for(const item of restaurant){
-            restoArray.push({
-                _id: item._id.toString(),
-                resto_name: item.resto_name,
-                resto_image: item.resto_image,
-            });
-        }
-
-        resp.render('home',{
-            layout: 'index-home',
-            title: 'Forkast Home Page',
-            resto_info: restoArray,
-            screen_name: global.loggedInUser
+    } catch (error) {
+        console.error('Error creating user:', error);
+        resp.render('result', {
+            layout: 'index',
+            title: 'Result of Action',
+            msg: 'An error occurred during registration. Please try again.',
+            btn_msg: 'Go back to Registration',
+            move_to: 'register'
         });
-    }).catch(errorFn);
-    //render the search-page.html
+    }
 });
 
-//Render Search Page//
-server.get('/search/', function(req, resp){
-    restoModel.find({}).then(function(restaurant){
-        let restoArray = [];
 
-        for(const item of restaurant){
-            restoArray.push({
-                resto_name: item.resto_name,
-                resto_image: item.resto_image
+    //Render Search Page//
+    server.get('/search/', function(req, resp){
+        restoModel.find({}).then(function(restaurant){
+            let restoArray = [];
+
+            for(const item of restaurant){
+                restoArray.push({
+                    resto_name: item.resto_name,
+                    resto_image: item.resto_image
+                });
+            }
+
+            resp.render('search',{
+                layout: 'index-search',
+                title: 'Create Review Page',
+                restos: restoArray
             });
-        }
-
-        resp.render('search',{
-            layout: 'index-search',
-            title: 'Create Review Page',
-            restos: restoArray
-        });
-    }).catch(errorFn);
-    //render the search-page.html
-});
+        }).catch(errorFn);
+        //render the search-page.html
+    });
 
 
 //Render View Profile//
@@ -338,4 +353,4 @@ process.on('SIGQUIT', finalClose); //catches other termination commands
 const port = process.env.port || 3000;
 server.listen(port, function(){
     console.log('listening at port' +port);
-});
+})
