@@ -335,7 +335,81 @@ server.get('/review_page/:name/', function(req, resp){
     }).catch(errorFn);
 });
 
+//Render create reviews
+server.get('/create_review/:name', function(req, resp){
+    const restoName = req.params.name;
+    console.log(restoName);
 
+    resp.render('create_review',{
+        layout: 'index-create-review',
+        title: 'Create Review for ' + restoName,
+        resto_name: restoName,
+        screen_name: global.loggedInUser
+    });
+});
+server.post('/submit_review', async function(req, resp){
+    const requiredFields = ['resto_name', 'review_title', 'review_desc', 'rating'];
+    if (!allFieldsProvided(req.body, requiredFields)) {
+        return resp.render('result', {
+            layout: 'index',
+            title: 'Result of Action',
+            msg: 'All fields are required. Please try again.',
+            btn_msg: 'Go back to Review',
+            move_to: 'create_review/' + req.body.resto_name
+        });
+    }
+
+    const reviewInstance = new resto_reviewModel({
+        user_name: global.loggedInUser,
+        resto_name: req.body.resto_name,
+        review_title: req.body.review_title,
+        review_desc: req.body.review_desc,
+        rating: req.body.rating
+    });
+    reviewInstance.save().then(function(review){
+        resp.render('result', {
+            layout: 'index',
+            title: 'Result of Action',
+            msg: 'Review submitted successfully!',
+            btn_msg: 'Go back to Home',
+            move_to: 'home'
+        });
+    }).catch(errorFn);
+});
+//Render upadate functions
+server.get('/edit_review/:id', function(req, resp){
+    const reviewId = req.params.id;
+    console.log(reviewId);
+
+    // Find the review by id
+    resto_reviewModel.findById(reviewId).then(function(review){
+        resp.render('edit_review',{
+            layout: 'index-edit-review',
+            title: 'Edit Review',
+            review: review
+        });
+    }).catch(errorFn);
+});
+server.post('/submit_edit_review/:id', async function(req, resp){
+    const reviewId = req.params.id;
+
+    const updatedFields = {
+        review_title: req.body.review_title,
+        review_desc: req.body.review_desc,
+        rating: req.body.rating
+    };
+
+    // Find the review by id and update it
+    resto_reviewModel.findByIdAndUpdate(reviewId, updatedFields).then(function(review){
+        resp.render('result', {
+            layout: 'index',
+            title: 'Result of Action',
+            msg: 'Review updated successfully!',
+            btn_msg: 'Go back to Home',
+            move_to: 'home'
+        });
+    }).catch(errorFn);
+});
 //Close DB//
 function finalClose(){
 
