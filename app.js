@@ -6,6 +6,15 @@
 //Set-up//
 const express = require('express');  
 const server = express(); 
+const session = require('express-session);
+
+app.use(session({
+    secret:'secret-keyyy',
+    resave:false,
+    saveUninitialized:false,
+    cookie: { secure: false }
+}));
+
 
 const bodyParser = require('body-parser');
 server.use(express.json());
