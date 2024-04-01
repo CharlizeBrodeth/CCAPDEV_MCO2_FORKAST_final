@@ -39,6 +39,16 @@ const bcrypt = require('bcrypt');
 // import validation helpers
 const {validateEmail, validatePassword, allFieldsProvided} = require('./validationHelpers');
 
+// create collection for available avatars 
+const avatarSchema = new mongoose.Schema({
+    avatar_name: {type: String},
+    avatar_image: {type: String}
+},{versionKey:false});
+
+
+//avatar model
+const avatarModel = mongoose.model('avatar', avatarSchema);
+
 //create collection under Forkastdb//
 const userSchema = new mongoose.Schema({
     fam_name: { type: String },
@@ -47,7 +57,8 @@ const userSchema = new mongoose.Schema({
     screen_name: { type: String },
     bday: {type: Date},
     email: {type: String},
-    password: {type: String}
+    password: {type: String},
+    user_avatar: {type: String}
   },{ versionKey: false });
 
 
@@ -131,7 +142,7 @@ server.post('/check_login', async function(req, resp){
             });
         }
 
-        global.loggedInUser = user.screen_name;
+        global.loggedInUser = user.user_name;
 
         const restaurants = await restoModel.find({});
         let restoArray = restaurants.map(item => ({
@@ -139,13 +150,18 @@ server.post('/check_login', async function(req, resp){
             resto_name: item.resto_name,
             resto_image: item.resto_image
         }));
-    
-        resp.render('home',{
-            layout: 'index-home',
-            title: 'Forkast Home Page',
-            resto_info: restoArray,
-            screen_name: global.loggedInUser
-        });
+
+        const searchUser = {user_name: global.loggedInUser}///////////////////////////////////////////////////
+        userModel.findOne(searchUser).then(function(user){
+            resp.render('home',{
+                layout: 'index-home',
+                title: 'Forkast Home Page',
+                resto_info: restoArray,       
+                 user_name: user.user_name,
+                user_avatar: user.user_avatar
+                });
+        }).catch(errorFn);
+
     } catch (error) {
         console.error('Login error:', error);
         resp.render('result', {
@@ -162,15 +178,28 @@ server.post('/check_login', async function(req, resp){
 //Render Register page//
 server.get('/register/', function(req, resp){
     //render the register.html
-    resp.render('register',{
-        layout: 'index',
-        title: 'Register Page'
-    });
+    avatarModel.find({}).then(function(avatars){
+        console.log('Retrieving all avatars');
+        let avatar_Array = [];
+
+        for(const item of avatars){
+            avatar_Array.push({
+                avatar_name: item.avatar_name,
+                avatar_image: item.avatar_image 
+            });
+        }
+        //render the register.html
+        resp.render('register',{
+            layout: 'index',
+             title: 'Register Page',
+             avatar_info: avatar_Array
+        });
+    }).catch(errorFn);
 });
 
 //Adding a user to the DB//
 server.post('/create_user', async function(req, resp){
-    const requiredFields = ['fam_name', 'first_name', 'user_name', 'screen_name', 'bday', 'email', 'password'];
+    const requiredFields = ['fam_name', 'first_name', 'user_name', 'screen_name', 'bday', 'email', 'password', 'avatar_image'];
     if (!allFieldsProvided(req.body, requiredFields)) {
         return resp.render('result', {
             layout: 'index',
@@ -226,7 +255,8 @@ server.post('/create_user', async function(req, resp){
             screen_name: req.body.screen_name,
             bday: req.body.bday,
             email: req.body.email,
-            password: hashedPassword // hashed password in db
+            password: hashedPassword, // hashed password in db
+            user_avatar: req.body.avatar_image
         };
 
         // saves to db
@@ -251,35 +281,59 @@ server.post('/create_user', async function(req, resp){
     }
 });
 
+//Render Home Page//
+server.get('/home/', function(req, resp){
+    restoModel.find({}).then(function(restaurant){
+        console.log('Retrieving all documents from restoModel');
+        let restoArray = [];
 
-    //Render Search Page//
-    server.get('/search/', function(req, resp){
-        restoModel.find({}).then(function(restaurant){
-            let restoArray = [];
-
-            for(const item of restaurant){
-                restoArray.push({
-                    resto_name: item.resto_name,
-                    resto_image: item.resto_image
-                });
-            }
-
-            resp.render('search',{
-                layout: 'index-search',
-                title: 'Create Review Page',
-                restos: restoArray
+        for(const item of restaurant){
+            restoArray.push({
+                _id: item._id.toString(),
+                resto_name: item.resto_name,
+                resto_image: item.resto_image,
+            });
+        }
+        const searchUser = {user_name: global.loggedInUser}
+        userModel.findOne(searchUser).then(function(user){
+            resp.render('home',{
+                layout: 'index-home',
+                title: 'Forkast Home Page',
+                resto_info: restoArray,
+                user_name: user.user_name,
+                user_avatar: user.user_avatar
             });
         }).catch(errorFn);
-        //render the search-page.html
-    });
+    }).catch(errorFn);
+});
 
+
+//Render Search Page//
+server.get('/search/', function(req, resp){
+    restoModel.find({}).then(function(restaurant){
+        let restoArray = [];
+
+        for(const item of restaurant){
+            restoArray.push({
+                resto_name: item.resto_name,
+                resto_image: item.resto_image
+            });
+        }
+
+        resp.render('search',{
+            layout: 'index-search',
+            title: 'Create Review Page',
+            restos: restoArray
+        });
+    }).catch(errorFn);
+});
 
 //Render View Profile//
 server.get('/profile/:name', function(req, resp){
     const user = req.params.name;
     console.log(user);
 
-    const searchUser = {screen_name: user}
+    const searchUser = {user_name: user}
 
     userModel.findOne(searchUser).then(function(user){
         const searchReview = {user_name: user.user_name, deleted: {$ne: true}};
@@ -303,10 +357,100 @@ server.get('/profile/:name', function(req, resp){
                 profile_name: user.first_name + " " + user.fam_name,
                 user_handle: user.user_name,
                 user_screen: user.screen_name,
-                user_reviews: reviews
+                user_reviews: reviews,
+                user_avatar: user.user_avatar
             });
         }).catch(errorFn);
     }).catch(errorFn);
+});
+
+// edit user details//
+server.get('/profile_edit', function(req, resp){
+    const logged_user = global.loggedInUser;
+
+    avatarModel.find({}).then(function(avatars){
+        console.log('Retrieving all avatars');
+        let avatar_Array = [];
+
+        for(const item of avatars){
+            avatar_Array.push({
+                avatar_name: item.avatar_name,
+                avatar_image: item.avatar_image 
+            });
+        }
+
+        const search_user = {user_name: logged_user};
+        userModel.findOne(search_user).then(function(user){
+            const user_email = user.email;
+            const user_name = user.user_name;
+            const screen_name = user.screen_name; 
+            const user_avatar = user.user_avatar;
+
+            //render the register.html
+            resp.render('user_edit',{
+                layout: 'index',
+                title: 'Profile Edit Page',
+                avatar_info: avatar_Array,
+                user_name: user_name,
+                screen_name: screen_name,
+                user_avatar: user_avatar,
+                user_email: user_email
+            });
+        }).catch(errorFn);
+    }).catch(errorFn);
+});
+
+//update the profile//
+server.post('/update_profile', async function(req, resp){
+    const user_email = req.body.user_email;
+    const new_userName = req.body.user_name;
+    const new_screenName = req.body.screen_name;
+    const new_avatar = req.body.avatar_image;
+
+    try {
+        const updateProfile = await userModel.findOneAndUpdate(
+            {email: user_email},
+            {
+                $set: {
+                    user_name: new_userName,
+                    screen_name: new_screenName,
+                    user_avatar: new_avatar
+                }
+
+            },
+            {new: true}       
+        );
+        if(updateProfile){
+            global.loggedInUser = new_userName;
+            const logged_user = global.loggedInUser;
+            console.log('/profile/'+ logged_user);
+            return resp.render('result', {
+                layout: 'index',
+                title: 'Result of Action',
+                msg: 'profile successfully updated',
+                btn_msg: 'return to profile',
+                move_to: 'profile/' + logged_user
+            });
+        } else{
+            return resp.render('result', {
+                layout: 'index',
+                title: 'Result of Action',
+                msg: 'Error updating profile details please try again...',
+                btn_msg: 'Go back to home',
+                move_to: 'home'
+            });
+        }
+    } catch(error){
+        console.error('Error updating user Profile', error);
+        return resp.render('result', {
+            layout: 'index',
+            title: 'Result of Action',
+            msg: 'Error updating profile details please try again...',
+            btn_msg: 'Go back to home',
+            move_to: 'home'
+        });
+    }
+    
 });
 
 //Render See Reviews of Restaurants//from home
@@ -431,6 +575,15 @@ server.post('/delete_review/:id', async (req, res) => {
         console.error('Error deleting review:', error);
         res.status(500).json({ success: false });
     }
+});
+
+
+server.get('/log-out', function(req, resp){
+    global.loggedInUser = "";
+    resp.render('start', {
+        layout: 'index',
+        title: 'Welcome to Forkast'
+    });
 });
 
 //Close DB//
