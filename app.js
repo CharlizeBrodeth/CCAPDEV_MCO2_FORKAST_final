@@ -1,14 +1,14 @@
 //Forkast server side 
 //Install Command:
 //npm init
-//npm i express express-handlebars body-parser mongoose bcrypt
+//npm i express express-handlebars body-parser mongoose bcrypt express-session
 
 //Set-up//
 const express = require('express');  
 const server = express(); 
-const session = require('express-session);
+const session = require('express-session');
 
-app.use(session({
+server.use(session({
     secret:'secret-keyyy',
     resave:false,
     saveUninitialized:false,
@@ -69,7 +69,8 @@ const resto_reviewSchema = new mongoose.Schema({
     resto_name: {type: String},
     review_title: {type: String},
     review_desc: {type: String},
-    rating: {type: Number}
+    rating: {type: Number},
+    deleted: {type: Boolean}
 },{versionKey: false});
 
 
@@ -281,7 +282,7 @@ server.get('/profile/:name', function(req, resp){
     const searchUser = {screen_name: user}
 
     userModel.findOne(searchUser).then(function(user){
-        const searchReview = {user_name: user.user_name}
+        const searchReview = {user_name: user.user_name, deleted: {$ne: true}};
 
         resto_reviewModel.find(searchReview).then(function(resto_reviews){
             console.log('Retrieving all reviews of the user');
@@ -313,7 +314,7 @@ server.get('/review_page/:name/', function(req, resp){
     const restoName = req.params.name;
     console.log(restoName);
     //find all reviews for the given resturant name
-    const searchResto = {resto_name: restoName};
+    const searchResto = {resto_name: restoName, deleted: {$ne: true}};
 
     //get image of restuarant
     restoModel.findOne(searchResto).then(function(restaurant){
@@ -419,6 +420,19 @@ server.post('/submit_edit_review/:id', async function(req, resp){
         });
     }).catch(errorFn);
 });
+
+// Delete
+server.post('/delete_review/:id', async (req, res) => {
+    const reviewId = req.params.id;
+    try {
+        await resto_reviewModel.findByIdAndUpdate(reviewId, { $set: { deleted: true } });
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error deleting review:', error);
+        res.status(500).json({ success: false });
+    }
+});
+
 //Close DB//
 function finalClose(){
 
