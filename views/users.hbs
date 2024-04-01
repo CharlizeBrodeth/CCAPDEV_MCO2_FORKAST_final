@@ -1,4 +1,4 @@
-<div class="main-container">
+ <div class="main-container">
         <div class="profile-container">
             <div class="search-container">
                 <input type="text" placeholder="Search" class="search-input"/>
@@ -7,7 +7,7 @@
             <div class="profile-card">
                 <div class="profile-avatar">
                     <!-- Dynamic profile image -->
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture" class="profile-image"/>
+                    <img src="{{user_avatar}}" alt="Profile Picture" class="profile-image"/>
                 </div>
                 <!-- Dynamic user details -->
                 <h1 class="profile-name">{{profile_name}}</h1>
@@ -15,7 +15,7 @@
                 <p class="profile-bio">{{user_screen}}</p>
                 <div class="profile-actions">
                     <button class="btn active-status">ACTIVE STATUS</button>
-                    <a href="edit_page.html">
+                    <a href="/profile_edit">
                         <button class="btn edit-profile">EDIT PROFILE</button>
                     </a>
                 </div>
@@ -34,13 +34,13 @@
                 </div>
                 <div class="review-btn-form">
                     <button class="review-edit-btn">Edit</button>
-                    <button class="review-delete-btn" data-review-id="{{this._id}}">Delete</button>
+                    <button class="review-edit-btn">Delete</button>
                 </div>
             </div>
             {{/each}}
         </div>
     </div>
-    <a href="/home"> <button class="back-btn">Back to homepage</button></a>
+<a href="/home"> <button class="back-btn">Back to homepage</button></a>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

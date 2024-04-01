@@ -1,4 +1,4 @@
-<body>
+
     <div class="register-container">
         <h1 class="register-title">REGISTER</h1>
         <form class="register-form" action="create_user" method="post">
@@ -30,6 +30,26 @@
                 <label for="password">Password *</label>
                 <input type="password" name="password" placeholder="Enter Password" required>
             </div>
+            <div class="form-group">
+                <label for="avatar">Avatar *</label>
+                <div class="avatar_container"> <!--Avatars-->
+                    <div class="chosen_avatar"><!--Chosen avatar-->
+                        Chosen Avatar: 
+                   </div>
+                   <input type="hidden" id="avatar_image_input" name="avatar_image" value="" required>
+                    <div class="avatar_list"><!--Avatar list -->
+                    {{#each avatar_info}}
+                    <div class="avatar_box">
+                        <img class="avatar" src="{{avatar_image}}" alt="{{avatar_name}}" id="{{avatar_name}}">
+                        {{avatar_name}}
+                    </div>
+                    {{/each}}
+                    </div>
+                </div>
+            </div>
+
+
+            
             <div class="form-group form-group-checkbox">
                 <input type="checkbox" id="user-agreement" required>
                 <label for="user-agreement" class="user-agreement-label">

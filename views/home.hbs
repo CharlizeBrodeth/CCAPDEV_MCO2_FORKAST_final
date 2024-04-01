@@ -15,10 +15,15 @@
             <button class="search-button-header">Search</button>
             </a>
         </div>
+        <div>
+            <a href = "/log-out">
+                <button class="btn search-button-header">Log-out</button>
+            </a>
+        </div>
         <nav class="profile-nav profile-nav-ex">
-            <p class="main-content" name="screen_name">{{screen_name}}</p>
-            <a href="/profile/{{screen_name}}">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture" class="profile-image"/>
+            <p class="main-content" name="screen_name">{{user_name}}</p>
+            <a href="/profile/{{user_name}}">
+                <img src="{{user_avatar}}" alt="{{user_name}}" class="profile-image"/>
             </a>
         </nav>
     </header>
