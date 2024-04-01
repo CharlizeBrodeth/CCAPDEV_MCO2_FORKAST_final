@@ -113,7 +113,8 @@ body, html {
 
 /* Input fields */
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="password"] {
     width: 96%; 
     padding: 10px; 
     margin-bottom: 10px; 
@@ -170,6 +171,63 @@ input[type="checkbox"] {
     background-color: #449D44; 
 }
 
+.avatar_container{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    background-color: #e9f5fc;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px
+}
+
+.chosen_avatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100px;
+    background-color: #FDE767;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-right: 2px;
+}
+
+.avatar_list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 65%;
+    height: auto;
+    background-color: #FDE767;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-left: 2px;
+    padding: 8px;
+}
+
+.avatar_box{
+    display: flex;
+    flex-direction: column;
+    background-color: #FDE767;
+    border: 1px solid #FDE767;
+    margin: 5px;
+    align-items: center;
+}
+
+.avatar{
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 45px;
+    height: 45px;
+}
+
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .register-container {
@@ -179,3 +237,14 @@ input[type="checkbox"] {
 }
 
 /**end of register styles**/
+
+/**edit profile styles**/
+.edit-profile-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+}
