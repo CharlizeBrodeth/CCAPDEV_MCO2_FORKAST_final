@@ -157,7 +157,7 @@ server.post('/check_login', async function(req, resp){
         }));
 
         const logged_user = req.session.user.user_name;
-        const searchUser = {user_name: logged_user}///////////////////////////////////////////////////
+        const searchUser = {user_name: logged_user}
         userModel.findOne(searchUser).then(function(user){
             resp.render('home',{
                 layout: 'index-home',
