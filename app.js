@@ -111,7 +111,7 @@ server.get('/login/', function(req, resp){
     });
 });
 
-global.loggedInUser = '';
+
 
 //Accepting login//
 server.post('/check_login', async function(req, resp){
@@ -142,7 +142,12 @@ server.post('/check_login', async function(req, resp){
             });
         }
 
-        global.loggedInUser = user.user_name;
+        req.session.user = {
+            id: user._id,
+            user_name: user.user_name,
+            user_email: user.email,
+        };
+
 
         const restaurants = await restoModel.find({});
         let restoArray = restaurants.map(item => ({
@@ -151,7 +156,8 @@ server.post('/check_login', async function(req, resp){
             resto_image: item.resto_image
         }));
 
-        const searchUser = {user_name: global.loggedInUser}///////////////////////////////////////////////////
+        const logged_user = req.session.user.user_name;
+        const searchUser = {user_name: logged_user}///////////////////////////////////////////////////
         userModel.findOne(searchUser).then(function(user){
             resp.render('home',{
                 layout: 'index-home',
@@ -294,7 +300,10 @@ server.get('/home/', function(req, resp){
                 resto_image: item.resto_image,
             });
         }
-        const searchUser = {user_name: global.loggedInUser}
+
+        const logged_user = req.session.user.user_name;
+
+        const searchUser = {user_name: logged_user}
         userModel.findOne(searchUser).then(function(user){
             resp.render('home',{
                 layout: 'index-home',
@@ -329,11 +338,11 @@ server.get('/search/', function(req, resp){
 });
 
 //Render View Profile//
-server.get('/profile/:name', function(req, resp){
-    const user = req.params.name;
-    console.log(user);
+server.get('/profile', function(req, resp){
+    const logged_user = req.session.user.user_name;
+    console.log(logged_user);
 
-    const searchUser = {user_name: user}
+    const searchUser = {user_name: logged_user}
 
     userModel.findOne(searchUser).then(function(user){
         const searchReview = {user_name: user.user_name, deleted: {$ne: true}};
@@ -366,7 +375,7 @@ server.get('/profile/:name', function(req, resp){
 
 // edit user details//
 server.get('/profile_edit', function(req, resp){
-    const logged_user = global.loggedInUser;
+    const logged_user = req.session.user.user_name;
 
     avatarModel.find({}).then(function(avatars){
         console.log('Retrieving all avatars');
@@ -421,15 +430,15 @@ server.post('/update_profile', async function(req, resp){
             {new: true}       
         );
         if(updateProfile){
-            global.loggedInUser = new_userName;
-            const logged_user = global.loggedInUser;
-            console.log('/profile/'+ logged_user);
+            req.session.user.user_name = new_userName;
+            //const logged_user = req.session.user.user_name;
+            console.log('/profile');
             return resp.render('result', {
                 layout: 'index',
                 title: 'Result of Action',
                 msg: 'profile successfully updated',
                 btn_msg: 'return to profile',
-                move_to: 'profile/' + logged_user
+                move_to: 'profile' 
             });
         } else{
             return resp.render('result', {
@@ -477,14 +486,20 @@ server.get('/review_page/:name/', function(req, resp){
                     rating: item.rating
                 });
             }
-            resp.render('reviews',{
-                layout: 'index-reviews',
-                title: 'Review Page'+ restoName,
-                reviews_list: reviews,
-                resto_image: restoImage,
-                restoName : restoName,
-                screen_name: global.loggedInUser
-            });
+
+            const logged_user = req.session.user.user_name;
+            const searchUser = {user_name: logged_user};
+            userModel.findOne(searchUser).then(function(user){
+                resp.render('reviews',{
+                    layout: 'index-reviews',
+                    title: 'Review Page'+ restoName,
+                    reviews_list: reviews,
+                    resto_image: restoImage,
+                    restoName : restoName,
+                    screen_name: user.user_name,
+                    avatar: user.user_avatar
+                });
+            })
         }).catch(errorFn);
     }).catch(errorFn);
 });
@@ -577,13 +592,21 @@ server.post('/delete_review/:id', async (req, res) => {
     }
 });
 
-
+//Logout//
 server.get('/log-out', function(req, resp){
-    global.loggedInUser = "";
-    resp.render('start', {
-        layout: 'index',
-        title: 'Welcome to Forkast'
-    });
+    if(req.session){
+        req.session.destroy(function(err){
+            if(err){
+                console.log(err);
+            }
+            else{
+                resp.render('start', {
+                    layout: 'index',
+                    title: 'Welcome to Forkast'
+                });
+            }
+        })
+    }
 });
 
 //Close DB//
