@@ -1,7 +1,7 @@
 How to load the "Forkast" website:
 First, in the "CCAPDEV_MCO2_FORKAST_final-main" file, open the file in terminal; 
 then input: "npm init" then keep typing Enter until it ask "Is this OK? (yes)" ,type yes; 
-then type "npm i express express-handlebars body-parser mongoose" after install those libraries;
+then type "npm i express express-handlebars body-parser mongoose bcrypt express-session" after install those libraries;
 after the installation is finished, type "node app.js";
 then you can see it's listening in port 3000;
 open a web page and type the link: "localhost:3000";
