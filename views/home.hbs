@@ -10,10 +10,10 @@
             </a>
         </div>
         <div class="search-container-header">
-            <input type="search" class="search-box-header" placeholder="Search...">
-            <a href="/home"> <!--Ajax part-->
-            <button class="search-button-header">Search</button>
-            </a>
+            <form action="/home" method="get">
+                <input type="search" name="name" class="search-box-header" placeholder="Search...">
+                <button type="submit" class="search-button-header">Search</button>
+            </form>
         </div>
         <div>
             <a href = "/log-out">
