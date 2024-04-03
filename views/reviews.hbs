@@ -27,11 +27,11 @@
             {{#each reviews_list}}
             <div class="review-box-whole">
                 <div class="review-box">
-                    <img class="review-box-image" src="https://surgassociates.com/wp-content/uploads/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg" alt="{{user_name}}">
+                    <img class="review-box-image" src="https://surgassociates.com/wp-content/uploads/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg" alt="{{this.user_name}}">
                     <div class="review-des">
-                        <div class="review-text review-text-des">from {{user_name}}</div>
-                        <div class="review-text">{{review_title}}</div>
-                        <div class="review-text review-text-des">{{review_desc}}</div>
+                        <div class="review-text review-text-des">from {{this.user_name}}</div>
+                        <div class="review-text">{{this.review_title}}</div>
+                        <div class="review-text review-text-des">{{this.review_desc}}</div>
                     </div>
                     <button class="up-vote-btn" title="Upvote Review">👍</button>
                     <button class="down-vote-btn" title="Downvote Review">👎</button>
