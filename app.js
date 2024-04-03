@@ -426,6 +426,17 @@ server.post('/update_profile', async function(req, resp){
     const new_avatar = req.body.avatar_image;
 
     try {
+        const userWithNewUsername = await userModel.findOne({ user_name: new_userName, email: { $ne: user_email } });
+        if (userWithNewUsername) {
+            return resp.render('result', {
+                layout: 'index',
+                title: 'Result of Action',
+                msg: 'Username already taken. Please choose a different one.',
+                btn_msg: 'Go back to Profile Edit',
+                move_to: 'profile_edit'
+            });
+        }
+
         const updateProfile = await userModel.findOneAndUpdate(
             {email: user_email},
             {
@@ -434,19 +445,17 @@ server.post('/update_profile', async function(req, resp){
                     screen_name: new_screenName,
                     user_avatar: new_avatar
                 }
-
             },
             {new: true}       
         );
         if(updateProfile){
             req.session.user.user_name = new_userName;
-            //const logged_user = req.session.user.user_name;
             console.log('/profile');
             return resp.render('result', {
                 layout: 'index',
                 title: 'Result of Action',
-                msg: 'profile successfully updated',
-                btn_msg: 'return to profile',
+                msg: 'Profile successfully updated',
+                btn_msg: 'Return to profile',
                 move_to: 'profile' 
             });
         } else{
@@ -467,8 +476,7 @@ server.post('/update_profile', async function(req, resp){
             btn_msg: 'Go back to home',
             move_to: 'home'
         });
-    }
-    
+    }   
 });
 
 //Delete Profile
