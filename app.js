@@ -288,34 +288,35 @@ server.post('/create_user', async function(req, resp){
 });
 
 //Render Home Page//
-server.get('/home/', function(req, resp){
-    restoModel.find({}).then(function(restaurant){
-        console.log('Retrieving all documents from restoModel');
-        let restoArray = [];
+server.get('/home', async (req, res) => {
+    try {
+        const restaurantName = req.query.name;
 
-        for(const item of restaurant){
-            restoArray.push({
-                _id: item._id.toString(),
-                resto_name: item.resto_name,
-                resto_image: item.resto_image,
-            });
-        }
+        const searchQuery = restaurantName ? { resto_name: { $regex: new RegExp(restaurantName, 'i') } } : {};
 
-        const logged_user = req.session.user.user_name;
+        const restaurants = await restoModel.find(searchQuery).lean();
 
-        const searchUser = {user_name: logged_user}
-        userModel.findOne(searchUser).then(function(user){
-            resp.render('home',{
-                layout: 'index-home',
-                title: 'Forkast Home Page',
-                resto_info: restoArray,
-                user_name: user.user_name,
-                user_avatar: user.user_avatar
-            });
-        }).catch(errorFn);
-    }).catch(errorFn);
+        let restoArray = restaurants.map(item => ({
+            resto_name: item.resto_name,
+            resto_image: item.resto_image
+        }));
+
+        res.render('home', { 
+            layout: 'index-home',
+            title: restaurantName ? 'Filtered Restaurant List' : 'Welcome to Forkast',
+            resto_info: restoArray, 
+            user_name: req.session.user ? req.session.user.user_name : '', 
+            user_avatar: req.session.user ? req.session.user.user_avatar : '' 
+        });
+    } catch (error) {
+        console.error('Error handling search request:', error);
+        res.status(500).render('error', { 
+            layout: 'index-home',
+            title: 'Error',
+            error: 'An error occurred while searching for the restaurants.'
+        });
+    }
 });
-
 
 //Render Search Page//
 server.get('/search/', function(req, resp){
