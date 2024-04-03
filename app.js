@@ -58,7 +58,8 @@ const userSchema = new mongoose.Schema({
     bday: {type: Date},
     email: {type: String},
     password: {type: String},
-    user_avatar: {type: String}
+    user_avatar: {type: String},
+    isDeleted: {type: Boolean}
   },{ versionKey: false });
 
 
@@ -262,7 +263,8 @@ server.post('/create_user', async function(req, resp){
             bday: req.body.bday,
             email: req.body.email,
             password: hashedPassword, // hashed password in db
-            user_avatar: req.body.avatar_image
+            user_avatar: req.body.avatar_image,
+            isDeleted: false
         };
 
         // saves to db
