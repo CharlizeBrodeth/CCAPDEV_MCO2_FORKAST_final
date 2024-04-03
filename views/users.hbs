@@ -37,7 +37,7 @@
                 </div>
                 <div class="review-btn-form">
                     <button class="review-edit-btn">Edit</button>
-                    <button class="review-edit-btn">Delete</button>
+                    <button class="review-delete-btn" data-review-id="{{this._id}}">Delete</button>
                 </div>
             </div>
             {{/each}}
@@ -53,19 +53,21 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             const reviewId = this.getAttribute('data-review-id');
             
-            fetch(`/delete_review/${reviewId}`, { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.success) {
-                        this.parentElement.parentElement.remove(); 
-                    } else {
-                        alert('Error deleting review.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+            fetch(`/delete_review/${reviewId}`, {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    this.closest('.review-box').remove();
+                } else {
                     alert('Error deleting review.');
-                });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error deleting review.');
+            });
         });
     });
 });
