@@ -1,48 +1,57 @@
- <header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Review</title>
+    <link rel="stylesheet" href="/common/style-search.css"> 
+</head>
+<body>
+    <header>
         <div class="header-content">
-            <img src="forkast_logo.png" alt="Logo" class="logo">
+            <img src="/path/to/forkast_logo.png" alt="Logo" class="logo"> 
         </div>
     </header>
     <div class="main-container">
-       
         <div class="search-container">
             <div class="text_review_title">Choose Restaurant to Review</div>
-            <select class="search-box" id="searchFilter" required>
-                {{#each restos}}
-                <option value="{{resto_name}}"> {{resto_name}}</option>
-                {{/each}}
-            </select>
-        </div>
+            <form action="/submit_review" method="POST">
+                <select class="search-box" name="resto_name" required>
+                    {{#each restos}}
+                    <option value="{{this.resto_name}}">{{this.resto_name}}</option>
+                    {{/each}}
+                </select>
 
-          <section class="review_section">
-            <h2 class="text_review_title">Write Your Review!</h2>
-            <form>
-                <div class="form_group">
-                    <label for="review_title" class="text_review_parts">Title:</label>
-                    <input class="input_box_style" type="text" id="review_title" placeholder="Enter title of review here...">
-                </div>
-                <div class="form_group">
-                    <label for="review_desc" class="text_review_parts">Description:</label>
-                    <textarea id="review_desc" cols="70" rows="10" placeholder="Enter more details here..."></textarea>
-                </div>
-                <div class="form_group rating">
-                    <label class="text_review_parts">Your Rating:</label>
-                    <div class="star-rating">
-                        <input id="star5" name="rating" type="radio" value="5" class="star"/>
-                        <label for="star5" class="star">&#9733;</label>
-                        <input id="star4" name="rating" type="radio" value="4" class="star"/>
-                        <label for="star4" class="star">&#9733;</label>
-                        <input id="star3" name="rating" type="radio" value="3" class="star"/>
-                        <label for="star3" class="star">&#9733;</label>
-                        <input id="star2" name="rating" type="radio" value="2" class="star"/>
-                        <label for="star2" class="star">&#9733;</label>
-                        <input id="star1" name="rating" type="radio" value="1" class="star"/>
-                        <label for="star1" class="star">&#9733;</label>
+                <section class="review_section">
+                    <h2 class="text_review_title">Write Your Review!</h2>
+                    <div class="form_group">
+                        <label for="review_title" class="text_review_parts">Title:</label>
+                        <input class="input_box_style" type="text" id="review_title" name="review_title" placeholder="Enter title of review here..." required>
                     </div>
-                </div>
-                <button type="submit" class="back_button submit_button">Submit</button>
+                    <div class="form_group">
+                        <label for="review_desc" class="text_review_parts">Description:</label>
+                        <textarea id="review_desc" name="review_desc" cols="70" rows="10" placeholder="Enter more details here..." required></textarea>
+                    </div>
+                    <div class="form_group rating">
+                        <label class="text_review_parts">Your Rating:</label>
+                        <div class="star-rating">
+                            <input id="star5" name="rating" type="radio" value="5" class="star" required/>
+                            <label for="star5" class="star">&#9733;</label>
+                            <input id="star4" name="rating" type="radio" value="4" class="star"/>
+                            <label for="star4" class="star">&#9733;</label>
+                            <input id="star3" name="rating" type="radio" value="3" class="star"/>
+                            <label for="star3" class="star">&#9733;</label>
+                            <input id="star2" name="rating" type="radio" value="2" class="star"/>
+                            <label for="star2" class="star">&#9733;</label>
+                            <input id="star1" name="rating" type="radio" value="1" class="star"/>
+                            <label for="star1" class="star">&#9733;</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="back_button submit_button">Submit</button>
+                </section>
             </form>
-        </section>
+        </div>
+        <a href="/home"> <button class="back-btn">Back to homepage</button></a>
     </div>
-
-    <a href="/home"> <button class="back-btn">Back to homepage</button></a>
+</body>
+</html>
