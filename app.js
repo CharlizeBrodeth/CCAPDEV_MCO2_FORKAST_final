@@ -516,35 +516,45 @@ server.get('/create_review/:name', function(req, resp){
         screen_name: global.loggedInUser
     });
 });
+
 server.post('/submit_review', async function(req, resp){
-    const requiredFields = ['resto_name', 'review_title', 'review_desc', 'rating'];
-    if (!allFieldsProvided(req.body, requiredFields)) {
+    const { resto_name, review_title, review_desc, rating } = req.body;
+
+    if (!resto_name || !review_title || !review_desc || !rating) {
         return resp.render('result', {
             layout: 'index',
             title: 'Result of Action',
             msg: 'All fields are required. Please try again.',
             btn_msg: 'Go back to Review',
-            move_to: 'create_review/' + req.body.resto_name
+            move_to: `create_review/${resto_name}`
         });
     }
 
-    const reviewInstance = new resto_reviewModel({
-        user_name: global.loggedInUser,
-        resto_name: req.body.resto_name,
-        review_title: req.body.review_title,
-        review_desc: req.body.review_desc,
-        rating: req.body.rating
-    });
-    reviewInstance.save().then(function(review){
+    try {
+        const reviewInstance = new resto_reviewModel({
+            user_name: req.session.user.user_name, 
+            resto_name,
+            review_title,
+            review_desc,
+            rating,
+            deleted: false 
+        });
+
+        await reviewInstance.save();
+
+        resp.redirect(`/review_page/${encodeURIComponent(resto_name)}`);
+    } catch (error) {
+        console.error('Error submitting review:', error);
         resp.render('result', {
             layout: 'index',
-            title: 'Result of Action',
-            msg: 'Review submitted successfully!',
-            btn_msg: 'Go back to Home',
-            move_to: 'home'
+            title: 'Error Submitting Review',
+            msg: 'An error occurred while submitting your review. Please try again.',
+            btn_msg: 'Go back to Review',
+            move_to: `create_review/${resto_name}`
         });
-    }).catch(errorFn);
+    }
 });
+
 //Render upadate functions
 server.get('/edit_review/:id', function(req, resp){
     const reviewId = req.params.id;
@@ -584,11 +594,15 @@ server.post('/submit_edit_review/:id', async function(req, resp){
 server.post('/delete_review/:id', async (req, res) => {
     const reviewId = req.params.id;
     try {
-        await resto_reviewModel.findByIdAndUpdate(reviewId, { $set: { deleted: true } });
-        res.json({ success: true });
+        const updatedReview = await resto_reviewModel.findByIdAndUpdate(reviewId, { $set: { deleted: true } }, { new: true });
+        if (updatedReview) {
+            res.json({ success: true });
+        } else {
+            res.status(404).json({ success: false, message: 'Review not found' });
+        }
     } catch (error) {
         console.error('Error deleting review:', error);
-        res.status(500).json({ success: false });
+        res.status(500).json({ success: false, message: 'Internal server error' });
     }
 });
 
