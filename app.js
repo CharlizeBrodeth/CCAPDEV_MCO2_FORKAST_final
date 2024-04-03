@@ -471,6 +471,55 @@ server.post('/update_profile', async function(req, resp){
     
 });
 
+//Delete Profile
+server.post('/delete_profile', async function(req, resp){
+    console.log("now deleting profile");
+    const logged_user = req.session.user.user_email;
+    try{
+        const deleteProfile = await userModel.findOneAndUpdate(
+            {email: logged_user},
+            {
+                $set: {
+                    isDeleted: true
+                }
+            },
+            {new: true}
+        );
+
+        if(deleteProfile){
+            console.log("successfully deleted profile");
+            if(req.session){
+                req.session.destroy();
+            }
+
+            return resp.render('start', {
+                layout: 'index',
+                title: 'Welcome to Forkast'
+            });
+        }
+        else{
+            return resp.render('result', {
+                layout: 'index',
+                title: 'Result of Action',
+                msg: 'Error deleting profile, please try again...',
+                btn_msg: 'Go back to Profile',
+                move_to: 'profile'
+            });
+        }
+
+    } catch(error){
+        console.error('Error updating user Profile', error);
+        return resp.render('result', {
+            layout: 'index',
+            title: 'Result of Action',
+            msg: 'Error deleting profile, please try again...',
+            btn_msg: 'Go back to Profile',
+            move_to: 'profile'
+        });
+    }
+
+});
+
 //Render See Reviews of Restaurants//from home
 server.get('/review_page/:name/', function(req, resp){
     const restoName = req.params.name;
