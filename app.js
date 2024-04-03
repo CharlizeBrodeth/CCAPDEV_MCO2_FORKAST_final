@@ -421,36 +421,48 @@ server.get('/profile_edit', function(req, resp){
 //update the profile//
 server.post('/update_profile', async function(req, resp){
     const user_email = req.body.user_email;
-    const new_userName = req.body.user_name;
-    const new_screenName = req.body.screen_name;
-    const new_avatar = req.body.avatar_image;
+    const new_userName = req.body.user_name.trim() || null; 
+    const new_screenName = req.body.screen_name.trim() || null;
+    const new_avatar = req.body.avatar_image || null; 
 
     try {
-        const userWithNewUsername = await userModel.findOne({ user_name: new_userName, email: { $ne: user_email } });
-        if (userWithNewUsername) {
+        const currentUser = await userModel.findOne({ email: user_email });
+        if (!currentUser) {
             return resp.render('result', {
                 layout: 'index',
-                title: 'Result of Action',
-                msg: 'Username already taken. Please choose a different one.',
-                btn_msg: 'Go back to Profile Edit',
-                move_to: 'profile_edit'
+                title: 'Profile Update Error',
+                msg: 'User not found.',
+                btn_msg: 'Return to profile',
+                move_to: 'profile'
             });
         }
 
+        if (new_userName !== currentUser.user_name) {
+            const userWithNewUsername = await userModel.findOne({ user_name: new_userName, email: { $ne: user_email } });
+            if (userWithNewUsername) {
+                return resp.render('result', {
+                    layout: 'index',
+                    title: 'Result of Action',
+                    msg: 'Username already taken. Please choose a different one.',
+                    btn_msg: 'Go back to Profile Edit',
+                    move_to: 'profile_edit'
+                });
+            }
+        }
+
+        let updateObj = {};
+        if (new_userName && new_userName !== currentUser.user_name) updateObj.user_name = new_userName;
+        if (new_screenName && new_screenName !== currentUser.screen_name) updateObj.screen_name = new_screenName;
+        if (new_avatar && new_avatar !== currentUser.user_avatar) updateObj.user_avatar = new_avatar;
+
         const updateProfile = await userModel.findOneAndUpdate(
-            {email: user_email},
-            {
-                $set: {
-                    user_name: new_userName,
-                    screen_name: new_screenName,
-                    user_avatar: new_avatar
-                }
-            },
-            {new: true}       
+            { email: user_email },
+            { $set: updateObj },
+            { new: true }
         );
-        if(updateProfile){
-            req.session.user.user_name = new_userName;
-            console.log('/profile');
+        if (updateProfile) {
+            if (updateObj.hasOwnProperty('user_name')) req.session.user.user_name = updateObj.user_name;
+            
             return resp.render('result', {
                 layout: 'index',
                 title: 'Result of Action',
@@ -458,25 +470,25 @@ server.post('/update_profile', async function(req, resp){
                 btn_msg: 'Return to profile',
                 move_to: 'profile' 
             });
-        } else{
+        } else {
             return resp.render('result', {
                 layout: 'index',
-                title: 'Result of Action',
-                msg: 'Error updating profile details please try again...',
+                title: 'Profile Update Error',
+                msg: 'Error updating profile details. Please try again...',
                 btn_msg: 'Go back to home',
                 move_to: 'home'
             });
         }
-    } catch(error){
-        console.error('Error updating user Profile', error);
+    } catch(error) {
+        console.error('Error updating user profile', error);
         return resp.render('result', {
             layout: 'index',
-            title: 'Result of Action',
-            msg: 'Error updating profile details please try again...',
+            title: 'Profile Update Error',
+            msg: 'Error updating profile details. Please try again...',
             btn_msg: 'Go back to home',
             move_to: 'home'
         });
-    }   
+    }
 });
 
 //Delete Profile
