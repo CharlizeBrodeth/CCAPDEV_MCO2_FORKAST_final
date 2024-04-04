@@ -84,6 +84,7 @@ const restoModel = new mongoose.model('restaurant', restoSchema);
 
 const resto_reviewSchema = new mongoose.Schema({
     user_name: {type: String},
+    user_email: {type: String},
     resto_name: {type: String},
     review_title: {type: String},
     review_desc: {type: String},
@@ -373,7 +374,7 @@ server.get('/profile', function(req, resp){
     const searchUser = {user_name: logged_user}
 
     userModel.findOne(searchUser).then(function(user){
-        const searchReview = {user_name: user.user_name, deleted: {$ne: true}};
+        const searchReview = {user_email: user.email, deleted: {$ne: true}};
 
         resto_reviewModel.find(searchReview).then(function(resto_reviews){
             console.log('Retrieving all reviews of the user');
@@ -577,9 +578,10 @@ server.get('/review_page/:name/', function(req, resp){
                console.log('Retrieving all reviews of the restaurant');
                let reviews = [];
                for(const item of resto_reviews){
-                    userModel.findOne({user_name: item.user_name}).then(function(reviewer){
+                    userModel.findOne({email: item.user_email}).then(function(reviewer){
                         if(item.rating == 1){
                             reviews.push({
+                                _id: item._id,
                                 user_name: item.user_name,
                                 resto_name: item.resto_name,
                                 review_title: item.review_title,
@@ -591,12 +593,13 @@ server.get('/review_page/:name/', function(req, resp){
                                 star4: "star grey",
                                 star5: "star grey",
                                 likes: item.like_array.length ? item.like_array.length : 0,
-                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.dislike_array.length : 0,
                                 reviewer_avatar: reviewer ? reviewer.user_avatar : null
                             });
                         }
                         else if(item.rating == 2){
                             reviews.push({
+                                _id: item._id,
                                 user_name: item.user_name,
                                 resto_name: item.resto_name,
                                 review_title: item.review_title,
@@ -608,12 +611,13 @@ server.get('/review_page/:name/', function(req, resp){
                                 star4: "star grey",
                                 star5: "star grey",
                                 likes: item.like_array.length ? item.like_array.length : 0,
-                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.dislike_array.length : 0,
                                 reviewer_avatar: reviewer ? reviewer.user_avatar : null
                             });
                         }
                         else if(item.rating == 3){
                             reviews.push({
+                                _id: item._id,
                                 user_name: item.user_name,
                                 resto_name: item.resto_name,
                                 review_title: item.review_title,
@@ -625,12 +629,13 @@ server.get('/review_page/:name/', function(req, resp){
                                 star4: "star grey",
                                 star5: "star grey",
                                 likes: item.like_array.length ? item.like_array.length : 0,
-                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.dislike_array.length : 0,
                                 reviewer_avatar: reviewer ? reviewer.user_avatar : null
                             });
                         }
                         else if(item.rating == 4){
                             reviews.push({
+                                _id: item._id,
                                 user_name: item.user_name,
                                 resto_name: item.resto_name,
                                 review_title: item.review_title,
@@ -642,12 +647,13 @@ server.get('/review_page/:name/', function(req, resp){
                                 star4: "star",
                                 star5: "star grey",
                                 likes: item.like_array.length ? item.like_array.length : 0,
-                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.dislike_array.length : 0,
                                 reviewer_avatar: reviewer ? reviewer.user_avatar : null
                             });
                         }
                         else if(item.rating == 5){
                             reviews.push({
+                                _id: item._id,
                                 user_name: item.user_name,
                                 resto_name: item.resto_name,
                                 review_title: item.review_title,
@@ -659,12 +665,13 @@ server.get('/review_page/:name/', function(req, resp){
                                 star4: "star",
                                 star5: "star",
                                 likes: item.like_array.length ? item.like_array.length : 0,
-                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.dislike_array.length : 0,
                                 reviewer_avatar: reviewer ? reviewer.user_avatar : null
                             });
                         }
                         else{
                             reviews.push({
+                                _id: item._id,
                                 user_name: item.user_name,
                                 resto_name: item.resto_name,
                                 review_title: item.review_title,
@@ -676,7 +683,7 @@ server.get('/review_page/:name/', function(req, resp){
                                 star4: "star",
                                 star5: "star",
                                 likes: item.like_array.length ? item.like_array.length : 0,
-                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.dislike_array.length : 0,
                                 reviewer_avatar: reviewer ? reviewer.user_avatar : null
                             });
                         }
@@ -731,6 +738,7 @@ server.post('/submit_review', async function(req, resp){
     try {
         const reviewInstance = new resto_reviewModel({
             user_name: req.session.user.user_name, 
+            user_email: req.session.user.user_email,
             resto_name,
             review_title,
             review_desc,
@@ -754,6 +762,72 @@ server.post('/submit_review', async function(req, resp){
         });
     }
 });
+
+//upvote
+server.get('/upvote_review/:id/', async function(req, resp){
+    const reviewId = req.params.id;
+    resto_reviewModel.findById(reviewId).then(function(review){
+        if(review){
+            const reviewer = req.session.user.user_email;
+            //index in likes
+            const indexOfReviewerLikes = review.like_array.indexOf(reviewer);
+
+             //index in dislikes 
+             const indexOfReviewerDislikes = review.dislike_array.indexOf(reviewer);
+            
+             if(indexOfReviewerDislikes !== -1){
+                review.dislike_array.splice(indexOfReviewerDislikes, 1);
+                review.like_array.push(reviewer);
+             }
+             else{
+                if(indexOfReviewerLikes !== -1){
+                    review.like_array.splice(indexOfReviewerLikes, 1); //removes the user from the array
+                }
+                else{
+                    review.like_array.push(reviewer);
+                }
+             }
+
+            //the comment was upvoted
+            
+        }
+
+        review.save();
+
+        resp.redirect("/review_page/"+review.resto_name);
+    }).catch(errorFn);
+});
+
+//downvote
+server.get('/downvote_review/:id/', async function(req, resp){
+    const reviewId = req.params.id;
+    resto_reviewModel.findById(reviewId).then(function(review){
+        if(review){
+            const reviewer = req.session.user.user_email;
+            //index in dislikes 
+            const indexOfReviewerDislikes = review.dislike_array.indexOf(reviewer);
+
+            //index in likes
+            const indexOfReviewerLikes = review.like_array.indexOf(reviewer);
+
+            if(indexOfReviewerLikes !== -1){
+                review.like_array.splice(indexOfReviewerLikes, 1);
+                review.dislike_array.push(reviewer);
+            }
+            else{
+                if(indexOfReviewerDislikes !== -1){
+                    review.dislike_array.splice(indexOfReviewerDislikes, 1);
+                }
+                else{
+                    review.dislike_array.push(reviewer);
+                }
+            }
+        }
+        review.save();
+        resp.redirect("/review_page/"+review.resto_name);
+    }).catch(errorFn);
+});
+
 
 //Render upadate functions
 server.get('/edit_review/:id', function(req, resp){
