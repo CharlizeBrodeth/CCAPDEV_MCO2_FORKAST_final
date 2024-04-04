@@ -26,6 +26,12 @@ server.engine('hbs', handlebars.engine({
     extname: 'hbs'
 }));
 
+
+
+
+
+// Now you can use the 'eq' helper in your Handlebars template
+
 server.use(express.static('public'));
 //End of set-up//
 
@@ -82,6 +88,8 @@ const resto_reviewSchema = new mongoose.Schema({
     review_title: {type: String},
     review_desc: {type: String},
     rating: {type: Number},
+    like_array: [String],
+    dislike_array: [String],
     deleted: {type: Boolean}
 },{versionKey: false});
 
@@ -567,13 +575,98 @@ server.get('/review_page/:name/', function(req, resp){
             console.log('Retrieving all reviews of the restaurant');
             let reviews = [];
             for(const item of resto_reviews){
-                reviews.push({
-                    user_name: item.user_name,
-                    resto_name: item.resto_name,
-                    review_title: item.review_title,
-                    review_desc: item.review_desc,
-                    rating: item.rating
-                });
+                userModel.findOne({user_name: item.user_name}).then(function(reviewer){
+                    if(item.rating == 1){
+                        reviews.push({
+                            user_name: item.user_name,
+                            resto_name: item.resto_name,
+                            review_title: item.review_title,
+                            review_desc: item.review_desc,
+                            rating: item.rating,
+                            star1: "star",
+                            star2: "star grey",
+                            star3: "star grey",
+                            star4: "star grey",
+                            star5: "star grey",
+                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                        });
+                    }
+                    else if(item.rating == 2){
+                        reviews.push({
+                            user_name: item.user_name,
+                            resto_name: item.resto_name,
+                            review_title: item.review_title,
+                            review_desc: item.review_desc,
+                            rating: item.rating,
+                            star1: "star",
+                            star2: "star",
+                            star3: "star grey",
+                            star4: "star grey",
+                            star5: "star grey",
+                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                        });
+                    }
+                    else if(item.rating == 3){
+                        reviews.push({
+                            user_name: item.user_name,
+                            resto_name: item.resto_name,
+                            review_title: item.review_title,
+                            review_desc: item.review_desc,
+                            rating: item.rating,
+                            star1: "star",
+                            star2: "star",
+                            star3: "star",
+                            star4: "star grey",
+                            star5: "star grey",
+                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                        });
+                    }
+                    else if(item.rating == 4){
+                        reviews.push({
+                            user_name: item.user_name,
+                            resto_name: item.resto_name,
+                            review_title: item.review_title,
+                            review_desc: item.review_desc,
+                            rating: item.rating,
+                            star1: "star",
+                            star2: "star",
+                            star3: "star",
+                            star4: "star",
+                            star5: "star grey",
+                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                        });
+                    }
+                    else if(item.rating == 5){
+                        reviews.push({
+                            user_name: item.user_name,
+                            resto_name: item.resto_name,
+                            review_title: item.review_title,
+                            review_desc: item.review_desc,
+                            rating: item.rating,
+                            star1: "star",
+                            star2: "star",
+                            star3: "star",
+                            star4: "star",
+                            star5: "star",
+                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                        });
+                    }
+                    else{
+                        reviews.push({
+                            user_name: item.user_name,
+                            resto_name: item.resto_name,
+                            review_title: item.review_title,
+                            review_desc: item.review_desc,
+                            rating: item.rating,
+                            star1: "star",
+                            star2: "star",
+                            star3: "star",
+                            star4: "star",
+                            star5: "star",
+                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                        });
+                    }
+                }).catch(errorFn);
             }
 
             const logged_user = req.session.user.user_name;
@@ -586,7 +679,7 @@ server.get('/review_page/:name/', function(req, resp){
                     resto_image: restoImage,
                     restoName : restoName,
                     screen_name: user.user_name,
-                    avatar: user.user_avatar
+                    user_avatar: user.user_avatar
                 });
             })
         }).catch(errorFn);
@@ -626,6 +719,8 @@ server.post('/submit_review', async function(req, resp){
             review_title,
             review_desc,
             rating,
+            like_array: [],
+            dislike_array: [],
             deleted: false 
         });
 
