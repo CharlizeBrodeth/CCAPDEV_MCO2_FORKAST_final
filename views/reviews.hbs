@@ -4,7 +4,6 @@
                 <img src="forkast_logo.png" alt="ForKast Logo" class="logo">
             </a>
         </div>
-    
         <nav class="profile-nav profile-nav-ex">
             <p class="main-content">{{screen_name}}</p>
             <a href="/profile">
@@ -33,8 +32,14 @@
                         <div class="review-text">{{this.review_title}}</div>
                         <div class="review-text review-text-des">{{this.review_desc}}</div>
                     </div>
-                    <button class="up-vote-btn" title="Upvote Review">👍</button>
-                    <button class="down-vote-btn" title="Downvote Review">👎</button>
+                    <div class="vote-space">
+                        <button class="up-vote-btn" name="upvote" title="Upvote Review">👍</button>
+                        <p>{{likes}}</p>
+                    </div>
+                    <div class="vote-space">
+                        <button class="down-vote-btn" name="downvote" title="Downvote Review">👎</button>
+                        <p>{{dislikes}}</p>
+                    </div>
                     <div class="star-rating-display">
                             <span class="{{this.star1}}">&#9733;</span>
                             <span class="{{this.star2}}">&#9733;</span>
