@@ -36,7 +36,7 @@
                     <div class="review-text review-text-des">{{review_desc}}</div>
                 </div>
                 <div class="review-btn-form">
-                    <button class="review-edit-btn">Edit</button>
+                     <button class="review-edit-btn" data-review-id="{{this._id}}">Edit</button>
                     <button class="review-delete-btn" data-review-id="{{this._id}}">Delete</button>
                 </div>
             </div>
@@ -68,6 +68,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
                 alert('Error deleting review.');
             });
+        });
+    });
+});
+</script>
+
+
+
+<div class="review-item">
+  <button class="review-edit-btn" data-review-id="{{this._id}}">Edit</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const editButtons = document.querySelectorAll('.review-edit-btn');
+
+    editButtons.forEach(button => {
+        button.addEventListener('click', function() {
+
+            const reviewId = this.getAttribute('data-review-id');
+
+            window.location.href = `/edit_review/${reviewId}`; 
         });
     });
 });
