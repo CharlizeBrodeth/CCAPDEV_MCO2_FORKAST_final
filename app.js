@@ -131,6 +131,16 @@ server.post('/check_login', async function(req, resp){
             });
         }
 
+        if(user.isDeleted){
+            return resp.render('result', {
+                layout: 'index',
+                title: 'Login Error',
+                msg: 'Sorry! User does not exist',
+                btn_msg: 'Go back to Login',
+                move_to: 'login'
+            });
+        }
+
         // compare pass and hashed pass
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -142,6 +152,7 @@ server.post('/check_login', async function(req, resp){
                 move_to: 'login'
             });
         }
+
 
         req.session.user = {
             id: user._id,
