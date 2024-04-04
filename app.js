@@ -380,6 +380,7 @@ server.get('/profile', function(req, resp){
             let reviews = [];
             for(const item of resto_reviews){
                 reviews.push({
+                    _id: item._id,
                     user_name: item.user_name,
                     resto_name: item.resto_name,
                     review_title: item.review_title,
@@ -564,125 +565,140 @@ server.get('/review_page/:name/', function(req, resp){
     const restoName = req.params.name;
     console.log(restoName);
     //find all reviews for the given resturant name
-    const searchResto = {resto_name: restoName, deleted: {$ne: true}};
-
-    //get image of restuarant
+    const searchResto = {resto_name: restoName};
     restoModel.findOne(searchResto).then(function(restaurant){
-        const restoImage = restaurant.resto_image;
+        if(restaurant){
+            console.log("Found Resto");
+             //get image of restuarant
+            const restoImage = restaurant.resto_image;
+            //get all reviews of that restaurant
+            const searchReview = {resto_name: restoName, deleted: false};
+           resto_reviewModel.find(searchReview).then(function(resto_reviews){
+               console.log('Retrieving all reviews of the restaurant');
+               let reviews = [];
+               for(const item of resto_reviews){
+                    userModel.findOne({user_name: item.user_name}).then(function(reviewer){
+                        if(item.rating == 1){
+                            reviews.push({
+                                user_name: item.user_name,
+                                resto_name: item.resto_name,
+                                review_title: item.review_title,
+                                review_desc: item.review_desc,
+                                rating: item.rating,
+                                star1: "star",
+                                star2: "star grey",
+                                star3: "star grey",
+                                star4: "star grey",
+                                star5: "star grey",
+                                likes: item.like_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                            });
+                        }
+                        else if(item.rating == 2){
+                            reviews.push({
+                                user_name: item.user_name,
+                                resto_name: item.resto_name,
+                                review_title: item.review_title,
+                                review_desc: item.review_desc,
+                                rating: item.rating,
+                                star1: "star",
+                                star2: "star",
+                                star3: "star grey",
+                                star4: "star grey",
+                                star5: "star grey",
+                                likes: item.like_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                            });
+                        }
+                        else if(item.rating == 3){
+                            reviews.push({
+                                user_name: item.user_name,
+                                resto_name: item.resto_name,
+                                review_title: item.review_title,
+                                review_desc: item.review_desc,
+                                rating: item.rating,
+                                star1: "star",
+                                star2: "star",
+                                star3: "star",
+                                star4: "star grey",
+                                star5: "star grey",
+                                likes: item.like_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                            });
+                        }
+                        else if(item.rating == 4){
+                            reviews.push({
+                                user_name: item.user_name,
+                                resto_name: item.resto_name,
+                                review_title: item.review_title,
+                                review_desc: item.review_desc,
+                                rating: item.rating,
+                                star1: "star",
+                                star2: "star",
+                                star3: "star",
+                                star4: "star",
+                                star5: "star grey",
+                                likes: item.like_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                            });
+                        }
+                        else if(item.rating == 5){
+                            reviews.push({
+                                user_name: item.user_name,
+                                resto_name: item.resto_name,
+                                review_title: item.review_title,
+                                review_desc: item.review_desc,
+                                rating: item.rating,
+                                star1: "star",
+                                star2: "star",
+                                star3: "star",
+                                star4: "star",
+                                star5: "star",
+                                likes: item.like_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                            });
+                        }
+                        else{
+                            reviews.push({
+                                user_name: item.user_name,
+                                resto_name: item.resto_name,
+                                review_title: item.review_title,
+                                review_desc: item.review_desc,
+                                rating: item.rating,
+                                star1: "star",
+                                star2: "star",
+                                star3: "star",
+                                star4: "star",
+                                star5: "star",
+                                likes: item.like_array.length ? item.like_array.length : 0,
+                                dislikes: item.dislike_array.length ? item.like_array.length : 0,
+                                reviewer_avatar: reviewer ? reviewer.user_avatar : null
+                            });
+                        }
+                    }).catch(errorFn);
+                   
+               }
 
-        //get all reviews of that restaurant
-        resto_reviewModel.find(searchResto).then(function(resto_reviews){
-            console.log('Retrieving all reviews of the restaurant');
-            let reviews = [];
-            for(const item of resto_reviews){
-                userModel.findOne({user_name: item.user_name}).then(function(reviewer){
-                    if(item.rating == 1){
-                        reviews.push({
-                            user_name: item.user_name,
-                            resto_name: item.resto_name,
-                            review_title: item.review_title,
-                            review_desc: item.review_desc,
-                            rating: item.rating,
-                            star1: "star",
-                            star2: "star grey",
-                            star3: "star grey",
-                            star4: "star grey",
-                            star5: "star grey",
-                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
-                        });
-                    }
-                    else if(item.rating == 2){
-                        reviews.push({
-                            user_name: item.user_name,
-                            resto_name: item.resto_name,
-                            review_title: item.review_title,
-                            review_desc: item.review_desc,
-                            rating: item.rating,
-                            star1: "star",
-                            star2: "star",
-                            star3: "star grey",
-                            star4: "star grey",
-                            star5: "star grey",
-                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
-                        });
-                    }
-                    else if(item.rating == 3){
-                        reviews.push({
-                            user_name: item.user_name,
-                            resto_name: item.resto_name,
-                            review_title: item.review_title,
-                            review_desc: item.review_desc,
-                            rating: item.rating,
-                            star1: "star",
-                            star2: "star",
-                            star3: "star",
-                            star4: "star grey",
-                            star5: "star grey",
-                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
-                        });
-                    }
-                    else if(item.rating == 4){
-                        reviews.push({
-                            user_name: item.user_name,
-                            resto_name: item.resto_name,
-                            review_title: item.review_title,
-                            review_desc: item.review_desc,
-                            rating: item.rating,
-                            star1: "star",
-                            star2: "star",
-                            star3: "star",
-                            star4: "star",
-                            star5: "star grey",
-                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
-                        });
-                    }
-                    else if(item.rating == 5){
-                        reviews.push({
-                            user_name: item.user_name,
-                            resto_name: item.resto_name,
-                            review_title: item.review_title,
-                            review_desc: item.review_desc,
-                            rating: item.rating,
-                            star1: "star",
-                            star2: "star",
-                            star3: "star",
-                            star4: "star",
-                            star5: "star",
-                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
-                        });
-                    }
-                    else{
-                        reviews.push({
-                            user_name: item.user_name,
-                            resto_name: item.resto_name,
-                            review_title: item.review_title,
-                            review_desc: item.review_desc,
-                            rating: item.rating,
-                            star1: "star",
-                            star2: "star",
-                            star3: "star",
-                            star4: "star",
-                            star5: "star",
-                            reviewer_avatar: reviewer ? reviewer.user_avatar : null
-                        });
-                    }
-                }).catch(errorFn);
-            }
-
-            const logged_user = req.session.user.user_name;
-            const searchUser = {user_name: logged_user};
-            userModel.findOne(searchUser).then(function(user){
-                resp.render('reviews',{
-                    layout: 'index-reviews',
-                    title: 'Review Page'+ restoName,
-                    reviews_list: reviews,
-                    resto_image: restoImage,
-                    restoName : restoName,
-                    screen_name: user.user_name,
-                    user_avatar: user.user_avatar
-                });
-            })
-        }).catch(errorFn);
+               const logged_user = req.session.user.user_name;
+               const searchUser = {user_name: logged_user};
+               userModel.findOne(searchUser).then(function(user){
+                   resp.render('reviews',{
+                       layout: 'index-reviews',
+                       title: 'Review Page'+ restoName,
+                       reviews_list: reviews,
+                       resto_image: restoImage,
+                       restoName : restoName,
+                       screen_name: user.user_name,
+                       user_avatar: user.user_avatar
+                   });
+               })
+           }).catch(errorFn);
+        }
     }).catch(errorFn);
 });
 
