@@ -1,6 +1,6 @@
   <header class="site-header">
         <div class="logo-container">
-            <a href="mco1home.html">
+            <a href="/home">
                 <img src="forkast_logo.png" alt="ForKast Logo" class="logo">
             </a>
         </div>
@@ -8,7 +8,7 @@
         <nav class="profile-nav profile-nav-ex">
             <p class="main-content">{{screen_name}}</p>
             <a href="/profile">
-                <img src="{{avatar}}" alt="Profile Picture" class="profile-image"/>
+                <img src="{{user_avatar}}" alt="Profile Picture" class="profile-image"/>
             </a>
         </nav>
     </header>
@@ -27,7 +27,7 @@
             {{#each reviews_list}}
             <div class="review-box-whole">
                 <div class="review-box">
-                    <img class="review-box-image" src="https://surgassociates.com/wp-content/uploads/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg" alt="{{this.user_name}}">
+                    <img class="review-box-image" src="{{this.reviewer_avatar}}" alt="{{this.user_name}}">
                     <div class="review-des">
                         <div class="review-text review-text-des">from {{this.user_name}}</div>
                         <div class="review-text">{{this.review_title}}</div>
@@ -36,15 +36,14 @@
                     <button class="up-vote-btn" title="Upvote Review">👍</button>
                     <button class="down-vote-btn" title="Downvote Review">👎</button>
                     <div class="star-rating-display">
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span>
-                        <span class="star">&#9733;</span> 
+                            <span class="{{this.star1}}">&#9733;</span>
+                            <span class="{{this.star2}}">&#9733;</span>
+                            <span class="{{this.star3}}">&#9733;</span>
+                            <span class="{{this.star4}}">&#9733;</span>
+                            <span class="{{this.star5}}">&#9733;</span> 
                     </div>
                 </div>
-
-        </div>
+             </div>
         {{/each}}
     </div>
     
