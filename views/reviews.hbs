@@ -33,11 +33,15 @@
                         <div class="review-text review-text-des">{{this.review_desc}}</div>
                     </div>
                     <div class="vote-space">
-                        <button class="up-vote-btn" name="upvote" title="Upvote Review">👍</button>
+                        <a href="/upvote_review/{{this._id}}">
+                            <button class="up-vote-btn" name="upvote" title="Upvote Review">👍</button>
+                        </a>
                         <p>{{likes}}</p>
                     </div>
                     <div class="vote-space">
-                        <button class="down-vote-btn" name="downvote" title="Downvote Review">👎</button>
+                        <a href="/downvote_review/{{this._id}}">
+                            <button class="down-vote-btn" name="downvote" title="Downvote Review">👎</button>
+                        </a>
                         <p>{{dislikes}}</p>
                     </div>
                     <div class="star-rating-display">
