@@ -710,18 +710,6 @@ server.get('/review_page/:name/', function(req, resp){
 });
 
 //Render create reviews
-server.get('/create_review/:name', function(req, resp){
-    const restoName = req.params.name;
-    console.log(restoName);
-
-    resp.render('create_review',{
-        layout: 'index-create-review',
-        title: 'Create Review for ' + restoName,
-        resto_name: restoName,
-        screen_name: global.loggedInUser
-    });
-});
-
 server.post('/submit_review', async function(req, resp){
     const { resto_name, review_title, review_desc, rating } = req.body;
 
