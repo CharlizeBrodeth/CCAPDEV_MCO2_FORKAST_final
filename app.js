@@ -829,7 +829,7 @@ server.get('/downvote_review/:id/', async function(req, resp){
 });
 
 
-//Render upadate functions
+//Render update functions
 server.get('/edit_review/:id', function(req, resp){
     const reviewId = req.params.id;
     console.log(reviewId);
@@ -837,31 +837,63 @@ server.get('/edit_review/:id', function(req, resp){
     // Find the review by id
     resto_reviewModel.findById(reviewId).then(function(review){
         resp.render('edit_review',{
-            layout: 'index-edit-review',
+            layout: 'index-update-review',
             title: 'Edit Review',
-            review: review
+            review_title: review.review_title,
+            review_desc: review.review_desc,
+            review_rating: review.rating,
+            reviewId: reviewId
         });
     }).catch(errorFn);
 });
+
+
+// Route to handle the submission of the edited review
 server.post('/submit_edit_review/:id', async function(req, resp){
-    const reviewId = req.params.id;
+    const reviewId = req.params.id; 
 
-    const updatedFields = {
-        review_title: req.body.review_title,
-        review_desc: req.body.review_desc,
-        rating: req.body.rating
-    };
+    const review_title = req.body.review_title;
+    const review_desc = req.body.review_desc;
+    const rating = req.body.rating;
 
-    // Find the review by id and update it
-    resto_reviewModel.findByIdAndUpdate(reviewId, updatedFields).then(function(review){
+    try {
+        const updatedReview = await resto_reviewModel.findByIdAndUpdate(
+            reviewId,
+            {
+                review_title: review_title,
+                review_desc: review_desc,
+                rating: rating
+            },
+            { new: true } 
+        );
+
+        if(updatedReview) {
+            resp.render('result', {
+                layout: 'index',
+                title: 'Result of Action',
+                msg: 'Review updated successfully!',
+                btn_msg: 'Go back to Profile',
+                move_to: 'profile'
+            });
+        } else {
+            resp.render('result', {
+                layout: 'index-update-review',
+                title: 'Result of Action',
+                msg: 'Error with updating your review... try again',
+                btn_msg: 'Go back to Profile',
+                move_to: 'profile'
+            });
+        }
+    } catch (error) {
+        console.error('Error updating review:', error);
         resp.render('result', {
             layout: 'index',
             title: 'Result of Action',
-            msg: 'Review updated successfully!',
-            btn_msg: 'Go back to Home',
-            move_to: 'home'
+            msg: 'Error updating your review... try again',
+            btn_msg: 'Go back to Profile',
+            move_to: 'profile'
         });
-    }).catch(errorFn);
+    }
 });
 
 // Delete
