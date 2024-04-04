@@ -242,6 +242,14 @@ body, html {
     border-radius: 50%;
 }
 
+.vote-space{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
 
 .profile-nav-ex{
     display: flex;
