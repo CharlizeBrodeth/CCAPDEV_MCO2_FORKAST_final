@@ -2,49 +2,64 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #e0f4ff;
+    background-color: #f0f4f8; 
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 40px; 
 }
 
 h1 {
-    color: #39A7FF;
+    color: #307AFF; 
 }
 
 form {
     width: 50%;
     margin-top: 20px;
+    background-color: #ffffff; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
 
 label {
     font-weight: bold;
+    color: #333; 
 }
 
 input[type="text"],
 textarea,
-input[type="number"],
-input[type="submit"] {
-    width: 100%;
+input[type="number"] {
+    width: calc(100% - 22px); 
     padding: 10px;
     margin-top: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+    margin-bottom: 20px; 
+    border: 1px solid #d9d9d9; 
+    background-color: #f9f9f9; 
+    box-sizing: border-box; 
+    font-size: 16px; 
 }
 
 input[type="submit"] {
     background-color: #39A7FF;
     color: white;
-    border: none;
-    cursor: pointer;
+    padding: 12px 20px; 
+    font-size: 18px; 
+    border-radius: 8px; 
+    transition: background-color 0.3s ease; 
 }
 
 input[type="submit"]:hover {
-    background-color: #449D44;
+    background-color: #2B8DD8; 
+}
+
+input[type="text"]:focus,
+textarea:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4A90E2;
+    background-color: #ffffff;
 }
