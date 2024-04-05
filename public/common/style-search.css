@@ -52,8 +52,9 @@ header {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 300px;
-    margin-bottom: 100px;
+    width: 300px; /* Fixed width */
+    margin: 0 auto; /* Auto margins for horizontal centering */
+    display: block; /* Ensure the element is block-level for margin auto to work */
     background-color: #fff;
 }
 
@@ -79,7 +80,8 @@ header {
     border: none;
     cursor: pointer;
     margin: 10px 0;
-    margin-left: 45%;
+    margin-top: 600px;
+    margin-left: 50%;
 }
 
 /**create review style**/
@@ -137,6 +139,7 @@ header {
     flex: 1;
     background-color: #fff;
     padding: 20px;
+    margin-top: 100px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
