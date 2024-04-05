@@ -13,3 +13,5 @@ use this as URL:"mongodb://localhost:27017"
 then connect;
 inside the database page, import the JSON file in each collection based on the names;
 
+
+All of the avatar images were retrieved from: https://www.freepik.com/
