@@ -1,15 +1,17 @@
 //Forkast server side 
 //Install Command:
 //npm init
-//
+//npm i express express-handlebars body-parser mongoose bcrypt express-session
+
 
 const mongoose = require('mongoose');
 
 const database = require('./models/database');
 
-mongoose.connect('mongodb://127.0.0.1:27017/Forkastdb', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB:', err));
+const mongoDBURI = 'mongodb+srv://charlizebrodeth:qwerty123@cluster0.hnf9xn8.mongodb.net/'; // Replace with your Atlas connection string
+mongoose.connect(mongoDBURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+  .then(() => console.log('Connected to MongoDB Atlas...'))
+  .catch(err => console.error('Could not connect to MongoDB Atlas:', err));
 
 
 const userModel = database.userModel;
@@ -95,6 +97,20 @@ async function importData() {
     }
 }
 importData();
+
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose connected to MongoDB Atlas');
+    // Once connected, import data
+    importData().catch(err => console.error('Error importing data:', err));
+});
+
+mongoose.connection.on('error', err => {
+    console.error('MongoDB Atlas connection error:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log('MongoDB Atlas connection dropped.');
+});
 
 mongoose.connection.once('open', () => {
     console.log('MongoDB connection open');
