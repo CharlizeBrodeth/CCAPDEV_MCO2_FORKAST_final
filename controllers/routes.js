@@ -18,9 +18,10 @@ const bcrypt = require('bcrypt');
 // import validation helpers
 const {validateEmail, validatePassword, allFieldsProvided} = require('./validationHelpers');
 
+const mongoStore = require('connect-mongo');
 
 function add(server){
-
+    
     //Sessions
     server.use(session({
         secret:'charlizebrodeth',
