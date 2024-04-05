@@ -24,7 +24,7 @@ function add(server){
     
     //Sessions
     server.use(session({
-        secret: 'charlizebrodeth',
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         store: MongoStore.create({ // Corrected here
