@@ -2,9 +2,10 @@
 const mongoose = require('mongoose');
 //mongoose.connect('mongodb://127.0.0.1:27017/Forkastdb');
 
-mongoose.connect('mongodb://127.0.0.1:27017/Forkastdb', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB:', err));
+const mongoDBURI = 'mongodb+srv://charlizebrodeth:qwerty123@cluster0.hnf9xn8.mongodb.net/'; // Replace with your Atlas connection string
+mongoose.connect(mongoDBURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+  .then(() => console.log('Connected to MongoDB Atlas...'))
+  .catch(err => console.error('Could not connect to MongoDB Atlas:', err));
 
 
 // create collection for available avatars 
