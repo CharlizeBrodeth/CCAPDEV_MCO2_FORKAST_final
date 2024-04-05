@@ -1,0 +1,700 @@
+[{
+  "_id": {
+    "$oid": "660fc2b5e46f028cfba627ce"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "Sandwhich Corner",
+  "review_title": "Best Sandwiches in Town!",
+  "review_desc": "I visited Sandwich Corner last week and was blown away by the quality of their sandwiches. The bread was perfectly toasted, and the balance of meats and veggies was spot on. Definitely coming back for more!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc2ffe46f028cfba627d8"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "Happy and Healthy",
+  "review_title": "Underwhelmed and Overpriced",
+  "review_desc": "I had high expectations for Happy and Healthy based on its name and concept, but my experience fell short. The ambiance of the restaurant is pleasant, but that does not compensate for the lackluster meal and the hit to my wallet.",
+  "rating": 2,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc32fe46f028cfba627e2"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "Colonel's Curry",
+  "review_title": "Cozy Up with Colonel's Curry",
+  "review_desc": "Just had the most comforting curry and rice at Colonel's Curry! The flavors were spot on, and the service? Absolutely stellar. It felt like a warm hug on a rough day. They truly understand what us students need: quick, delicious, and affordable meals. Plus, the staff always greets you with a smile that makes you feel right at home. Definitely coming back for more!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc390e46f028cfba627ec"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "Potato Corner",
+  "review_title": "Fries Reinvented at Potato Corner's Curry",
+  "review_desc": "Potato Corner has changed the fry game! Their variety of flavors keeps my taste buds dancing, and the service is as quick as it is friendly. It's my top pick for a flavorful, fast snack.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc3c5e46f028cfba627f6"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "BlackStem",
+  "review_title": "Brewed to Perfection at Blackstem",
+  "review_desc": "Blackstem is a haven for coffee and tea lovers alike. Each cup is crafted with care, offering rich flavors that delight the senses. The cozy atmosphere and friendly staff make it the perfect spot for morning pick-me-ups or afternoon breaks.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc3e9e46f028cfba62800"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "The Hungry Pita",
+  "review_title": "A Flavorful Journey at The Hungry Pita",
+  "review_desc": "The Hungry Pita is a revelation for pita enthusiasts! With a variety of flavors, each pita is a culinary adventure. The staff's warmth and efficiency make the experience even more enjoyable. It's my new favorite spot for a quick, delicious meal.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc408e46f028cfba6280a"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "Bowl'd",
+  "review_title": "Yogurt Perfection at Bowl'd",
+  "review_desc": "Bowl'd has mastered the art of yogurt bowls, offering a heavenly blend of creamy yogurt and fresh, diverse toppings. The friendly staff make choosing your perfect combination a breeze. A must-visit for a healthy, delicious treat.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc42ee46f028cfba62814"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "de Original Jamaican",
+  "review_title": "A Taste of Jamaica at De Original Jamaican Pattie",
+  "review_desc": "De Original Jamaican Pattie brings the authentic flavors of Jamaica right to your doorstep. Each pattie is a flaky, flavorful delight, filled with perfectly seasoned fillings. The warm and friendly staff make the experience even more enjoyable, ensuring you always leave with a smile.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc453e46f028cfba6281e"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "The Beef",
+  "review_title": "Meat Lovers' Paradise at The Beef",
+  "review_desc": "The Beef is the ultimate destination for anyone craving hearty beef dishes. Their beef gyudon and salpicao rice toppings are cooked to perfection, offering a melt-in-your-mouth experience. The staff's friendly demeanor and swift service make each meal here not just a feast for the taste buds but also a warm, welcoming experience.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc478e46f028cfba62828"
+  },
+  "user_name": "SarahB",
+  "user_email": "sarahbrown@gmail.com",
+  "resto_name": "Infinitea",
+  "review_title": "Infinitea: A Sip of Bliss",
+  "review_desc": "Infinitea is a dream come true for milktea and juice lovers. Their extensive menu offers endless possibilities, each more delicious than the last. The staff's warmth and quick service enhance the experience, making it my go-to spot for a refreshing drink.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc4cce46f028cfba6283c"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "Sandwhich Corner",
+  "review_title": "Great Value for Money",
+  "review_desc": "The portions are generous, and the service is quick. A must-visit spot for sandwich lovers!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc54ae46f028cfba62847"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "Happy and Healthy",
+  "review_title": " Nourishing and Delicious",
+  "review_desc": "Happy and Healthy lives up to its name! My order was a delightful blend of fresh vegetables, perfectly cooked quinoa, and a flavorful dressing. This restaurant is a haven for health-conscious foodies. Definitely my go-to spot for a nutritious meal.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc574e46f028cfba62852"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "Colonel's Curry",
+  "review_title": "The Heart and Soul of Campus Cuisine",
+  "review_desc": "Colonel's Curry isn't just about the food; it's about the experience. Yes, the curry is delicious, but the warmth and friendliness of the staff add so much more to the meal. They serve every dish with a smile and always ask how your day is going. It's this personal touch that makes me choose Colonel's over any other spot on campus for a quick, satisfying meal.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc5a3e46f028cfba6285d"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "Potato Corner",
+  "review_title": "Ultimate Fry Fix",
+  "review_desc": "Potato Corner offers crispy perfection in every size and flavor. The efficient, friendly staff make the experience even better. My go-to for a quick, satisfying treat.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc5dee46f028cfba62868"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "Bowl'd",
+  "review_title": "Healthy Meets Tasty at Bowl'd",
+  "review_desc": "Who knew healthy could taste this good? Bowl'd's yogurt bowls, topped with fresh, tasty ingredients, are a testament to that. The staff's friendly, efficient service makes every visit enjoyable.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc617e46f028cfba62873"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "BlackStem",
+  "review_title": "Sip, Savor, Smile at Blackstem",
+  "review_desc": "Every visit to Blackstem is a delight, thanks to their wide range of coffees and teas that cater to all tastes. The staff's friendliness and expertise elevate the experience, ensuring your drink is just how you like it.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc657e46f028cfba6287e"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "Infinitea",
+  "review_title": "Infinitea: The Ultimate Drink Stop",
+  "review_desc": "For those who take their beverages seriously, Infinitea is a must-visit. The selection of milkteas and juices is impressive, each crafted to perfection. Add in the friendly, efficient service, and it's clear why it's a local favorite.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc679e46f028cfba62889"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "The Beef",
+  "review_title": "Unbeatable Beef Dishes at The Beef",
+  "review_desc": "The Beef offers an exceptional array of beef dishes, with the gyudon and salpicao standing out for their succulence and flavor. The welcoming staff and the quick service make it a pleasure to dine here, ensuring that every visit is as enjoyable as the food.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc6e1e46f028cfba6289e"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "Colonel's Curry",
+  "review_title": "Affordable, Tasty, and Unbelievably Friendly",
+  "review_desc": "I stumbled upon Colonel's Curry between classes and wow, am I glad I did! The curry and rice were absolutely divine, rich in flavor and just the comfort food I needed. But what truly made my experience memorable was the service. The staff were incredibly kind, making sure my meal was perfect. It's rare to find a place that cares so much about its customers. Colonel's Curry is a true gem on campus.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc707e46f028cfba628aa"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "Potato Corner",
+  "review_title": "Flavor Galore at Potato Corner",
+  "review_desc": "Every fry flavor at Potato Corner is a delight, from savory to spicy. What really makes the spot shine is the warm, welcoming staff. It's not just a snack stop; it's a community hub.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc72de46f028cfba628b6"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "Bowl'd",
+  "review_title": "Bowl'd Over by Deliciousness",
+  "review_desc": "Bowl'd offers not just yogurt, but a fresh, flavorful experience. The variety of toppings is impressive, and the staff's recommendations are spot-on. It's my go-to spot for a nutritious snack.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc76ae46f028cfba628c2"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "BlackStem",
+  "review_title": "A Cup Above the Rest",
+  "review_desc": "Blackstem stands out with its exceptional coffee and tea, meticulously prepared to bring out the best flavors. The ambiance is matched by the staff's warmth, making each visit a memorable one. Definitely a must-visit for any beverage aficionado.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc7a6e46f028cfba628ce"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "The Hungry Pita",
+  "review_title": "Satisfy Your Pita Cravings",
+  "review_desc": "The Hungry Pita has mastered the art of pita-making, with flavors that pop and satisfy. Whether you're in the mood for something classic or adventurous, they've got you covered. Plus, the staff are super helpful and make sure your order is perfect.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc7d7e46f028cfba628d9"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "Infinitea",
+  "review_title": "Refresh Your Day at Infinitea",
+  "review_desc": "Infinitea's drinks are a refreshing antidote to any day. With a perfect balance of flavors in their milkteas and juices, it's always a satisfying visit. The staff go above and beyond to ensure you leave happier than you arrived.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc7fbe46f028cfba628e5"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "de Original Jamaican",
+  "review_title": "Savor the Spice of Jamaica",
+  "review_desc": "De Original Jamaican Pattie offers a genuine taste of Jamaican cuisine with their scrumptious patties. The spicy, savory fillings wrapped in a crispy, golden crust are irresistible. Coupled with the staff's cheerful service, it's a culinary journey worth taking.",
+  "rating": 3,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc843e46f028cfba628f8"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "The Beef",
+  "review_title": "A Beefy Feast Awaits at The Beef",
+  "review_desc": "The Beef is a haven for beef aficionados. Their beef gyudon and salpicao rice toppings are not to be missed, offering rich flavors that leave you wanting more. The ambiance is cozy, and the staff are always welcoming and attentive, ensuring a delightful dining experience every time.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc864e46f028cfba6290c"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "Sandwhich Corner",
+  "review_title": "\"Delicious sandwiches!",
+  "review_desc": "I recently visited Sandwich Corner and tried their amazing sandwiches. Highly recommended!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc891e46f028cfba62920"
+  },
+  "user_name": "MichWW",
+  "user_email": "michalWilliams@gmail.com",
+  "resto_name": "Happy and Healthy",
+  "review_title": "Healthy Lunch Spot",
+  "review_desc": "Happy and Healthy is my go-to spot for a healthy lunch. Their salads are always fresh and delicious, and I love the customizable options. The atmosphere is bright and cheerful, making it a pleasant place to dine. Plus, their prices are very reasonable for the quality of food they serve.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc8dde46f028cfba6293b"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "Happy and Healthy",
+  "review_title": "Delicious Wraps!",
+  "review_desc": "Had the pleasure of trying the wraps at Happy and Healthy, and they were fantastic! The veggies were crisp, the sauces were flavorful, and the wraps were perfectly toasted. I appreciate that they offer both vegetarian and meat options, catering to different preferences. Great spot for a quick and healthy meal!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc903e46f028cfba62948"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "Sandwhich Corner",
+  "review_title": "Tasty Sandwiches",
+  "review_desc": "Sandwich Corner never disappoints! Their sandwiches are always fresh and flavorful. Highly recommend the roast beef sandwich!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc929e46f028cfba62955"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "The Beef",
+  "review_title": "Savor the Flavor at The Beef",
+  "review_desc": "If you're in the mood for some seriously delicious beef dishes, The Beef has got you covered. Their gyudon and salpicao are flavorful, tender, and perfectly seasoned. Plus, the efficient and friendly service adds a special touch to the dining experience. It's my go-to spot for a satisfying beef fix.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc948e46f028cfba62962"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "de Original Jamaican",
+  "review_title": "Flavor Explosion at De Original Jamaican Pattie",
+  "review_desc": "If you're looking for a quick, delicious bite, De Original Jamaican Pattie is the place to go. Their Jamaican patties are an explosion of flavor, with a variety of fillings to choose from. The welcoming vibe and efficient service make every visit a pleasure.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc971e46f028cfba62970"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "Infinitea",
+  "review_title": "Where Flavors and Freshness Meet",
+  "review_desc": "Stepping into Infinitea, you're greeted by an array of vibrant flavors and the sweetest staff. Whether it's a creamy milktea or a zesty juice, every choice is a winner. It's the perfect place for a flavorful escape.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc99be46f028cfba6297d"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "Bowl'd",
+  "review_title": "A bowl full of bliss",
+  "review_desc": "Stepping into Bowl'd is like entering yogurt paradise. Their range of toppings from fruits to nuts ensures every bite is a new delight. Plus, the warm, helpful service adds a special touch to each visit.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc9c6e46f028cfba6298a"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "The Hungry Pita",
+  "review_title": "Pita Paradise Found",
+  "review_desc": "Discovering The Hungry Pita was like finding treasure. Their pita flavors are both innovative and delicious, offering something for everyone. The service is quick and friendly, making every visit a pleasure. Highly recommend for a tasty, satisfying bite.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc9fae46f028cfba6299a"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "BlackStem",
+  "review_title": "Where Coffee Meets Community",
+  "review_desc": "At Blackstem, it's not just about the drink—it's about the experience. Their coffee and tea selection is top-notch, and the welcoming vibe provided by the staff makes you feel right at home. It's my go-to place for quality brews and conversation.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fca20e46f028cfba629ab"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "Potato Corner",
+  "review_title": "Fry-Day Every Day",
+  "review_desc": "Obsessed with Potato Corner's fries! Whether it's cheese or chili, each flavor is a hit. The staff's quick service and friendly advice make every visit a treat. Can't get enough",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fca46e46f028cfba629b8"
+  },
+  "user_name": "foodLover23",
+  "user_email": "oliviarodriguez23@gmail.com",
+  "resto_name": "Colonel's Curry",
+  "review_title": "Quick Bites, Endless Delight",
+  "review_desc": "Colonel's Curry is a game changer for anyone on campus looking for a quick yet hearty meal. Their curry has the right amount of spice and warmth, perfect for any weather. But what really sets them apart is the service – so friendly and welcoming. It's like visiting a family member who cooks your favorite dish just the way you like it. Can't wait for my next visit!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcabde46f028cfba629e7"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "The Hungry Pita",
+  "review_title": "Pitas with Personality",
+  "review_desc": "Every pita at The Hungry Pita is a flavor bomb, thanks to their unique and delicious combinations. The vibe is laid-back, and the staff are always ready with a smile and recommendations. It's the ideal spot for a casual, flavorful meal.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcaf1e46f028cfba629fc"
+  },
+  "user_name": "EmJohnson",
+  "user_email": "emilyJohnson@gmail.com",
+  "resto_name": "de Original Jamaican",
+  "review_title": "Jamaican Delights in Every Bite",
+  "review_desc": "Every visit to De Original Jamaican Pattie is a delight. Their patties, bursting with authentic Jamaican flavors, are a must-try for anyone seeking a quick, satisfying meal. The friendly staff and cozy atmosphere make it all the more inviting.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcb36e46f028cfba62a14"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "Happy and Healthy",
+  "review_title": "Fantastic Vegan Options!",
+  "review_desc": "As a vegan, I'm always on the lookout for restaurants that offer delicious plant-based options. Happy and Healthy exceeded my expectations with their wide variety of vegan dishes. From their hearty salads to flavorful tofu bowls, every bite was a delight. The staff was friendly, and the ambiance was cozy. Highly recommend!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcb59e46f028cfba62a22"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "The Beef",
+  "review_title": "The Beef: Where Flavor Meets Hospitality",
+  "review_desc": "At The Beef, it's all about the perfect blend of delicious beefy flavors and warm hospitality. Their beef gyudon and salpicao are a testament to their commitment to quality. Along with the friendly service, it's the ideal spot for anyone looking to indulge in some top-notch beef dishes.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcb7ae46f028cfba62a30"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "The Hungry Pita",
+  "review_title": "A Feast of Flavors at The Hungry Pita",
+  "review_desc": "The Hungry Pita doesn't just serve food; they serve joy in the form of pitas. Each flavor is more exciting than the last, and the staff's enthusiasm about their offerings is contagious. For a quick, delectable meal, this is the place to be.",
+  "rating": 4,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcb98e46f028cfba62a3e"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "de Original Jamaican",
+  "review_title": "Discover Jamaica's Best-Kept Secret",
+  "review_desc": "De Original Jamaican Pattie is a hidden gem for anyone craving the authentic taste of Jamaica. The variety of patties, each more delicious than the last, offers something for every palate. The excellent service and warm ambiance add to the charm of this delightful spot.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcbb6e46f028cfba62a4c"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "Infinitea",
+  "review_title": "A Flavor Journey at Infinitea",
+  "review_desc": "Infinitea offers a delightful journey through its extensive milktea and juice menu. The drinks are not only refreshing but also creatively crafted. Coupled with the welcoming staff, each visit feels like a treat to the senses.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcbd8e46f028cfba62a5a"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "BlackStem",
+  "review_title": "Blackstem: A Brewed Awakening",
+  "review_desc": "Blackstem has quickly become my sanctuary for coffee and tea. Their selection is impressive, and the quality is always spot-on. Coupled with the staff's genuine care, it's the ideal place for anyone looking to enjoy a perfectly brewed cup.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcbfde46f028cfba62a68"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "Bowl'd",
+  "review_title": "Customize Your Delight at Bowl'd",
+  "review_desc": "Bowl'd lets you mix and match yogurt with an array of toppings for a unique treat every time. The helpful staff ensure your bowl is exactly to your liking. A refreshing stop for a personalized snack.",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcc1de46f028cfba62a78"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "Colonel's Curry",
+  "review_title": "A Culinary Hug in a Bowl",
+  "review_desc": "There's nothing better than grabbing a bowl of curry and rice from Colonel's Curry after a long day of lectures. The flavors are comforting, and the portion sizes are perfect for a student budget. But it's the small talk and the genuine interest the staff shows in every customer that make each visit so special. They've created a little oasis of warmth and deliciousness amidst the hustle and bustle of student life. Highly recommend!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcc3ee46f028cfba62a88"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "Colonel's Curry",
+  "review_title": "Fry Heaven at Potato Corner",
+  "review_desc": "From classic to exotic, Potato Corner's fry flavors are unbeatable. Add in the super cool and quick staff, and it's the ideal spot for fry lovers. Always leaves me wanting more!",
+  "rating": 5,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+},
+{
+  "_id": {
+    "$oid": "660fcc5ce46f028cfba62a97"
+  },
+  "user_name": "jajaRamirez",
+  "user_email": "elijahramirez15@gmail.com",
+  "resto_name": "Sandwhich Corner",
+  "review_title": "Good, But Room for Improvement",
+  "review_desc": "I was really looking forward to trying Sandwich Corner due to all the rave reviews. However, my experience was marred by slow service. The sandwich I ordered was delicious, no doubt, but waiting over 30 minutes for a sandwich when the place wasn't even that busy was a letdown.",
+  "rating": 3,
+  "like_array": [],
+  "dislike_array": [],
+  "deleted": false
+}]

@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "660fc089e46f028cfba627b6"
+  },
+  "fam_name": "Johnson",
+  "first_name": "Emily",
+  "user_name": "EmJohnson",
+  "screen_name": "Emily",
+  "bday": {
+    "$date": "2001-02-03T00:00:00.000Z"
+  },
+  "email": "emilyJohnson@gmail.com",
+  "password": "$2b$10$gnN8AgJi30wwqB2P9dg8beuq79hrH3K2GcuepGZOVfa9wwcDkAbne",
+  "user_avatar": "https://img.freepik.com/premium-psd/3d-illustration-human-avatar-profile_23-2150671175.jpg",
+  "isDeleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc0ede46f028cfba627ba"
+  },
+  "fam_name": "Williams",
+  "first_name": "Michael",
+  "user_name": "MichWW",
+  "screen_name": "Michael Willy",
+  "bday": {
+    "$date": "2002-03-22T00:00:00.000Z"
+  },
+  "email": "michalWilliams@gmail.com",
+  "password": "$2b$10$HQICSkVGq026g6mEzWL6b.Bcb/qV3cuWjpHvhESx6XrHRfCU7wIq.",
+  "user_avatar": "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671124.jpg?w=740&t=st=1711874151~exp=1711874751~hmac=1cf9d4172735fe665abbcb3197f8aeb7fc90e895e81f5e2ee58ae91ec1bd3333",
+  "isDeleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc14be46f028cfba627be"
+  },
+  "fam_name": "Rodriguez",
+  "first_name": "Olivia",
+  "user_name": "foodLover23",
+  "screen_name": "Olivia <3",
+  "bday": {
+    "$date": "2003-03-23T00:00:00.000Z"
+  },
+  "email": "oliviarodriguez23@gmail.com",
+  "password": "$2b$10$YvxW5tBRqUJdqRySgJyHWefOlxa3ZlIUi6NuwPOGtwHHJVLRDyk7y",
+  "user_avatar": "https://img.freepik.com/premium-psd/3d-illustration-human-avatar-profile_23-2150671169.jpg?w=740",
+  "isDeleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc19ce46f028cfba627c2"
+  },
+  "fam_name": "Brown",
+  "first_name": "Sarah",
+  "user_name": "SarahB",
+  "screen_name": "Sarah Brown",
+  "bday": {
+    "$date": "2001-06-04T00:00:00.000Z"
+  },
+  "email": "sarahbrown@gmail.com",
+  "password": "$2b$10$QkfYlGzqAH9WwjI3adWjue3RVFPM8agIMCoP2ka4/kzLz0dUbBwRK",
+  "user_avatar": "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671138.jpg",
+  "isDeleted": false
+},
+{
+  "_id": {
+    "$oid": "660fc203e46f028cfba627c6"
+  },
+  "fam_name": "Ramirez",
+  "first_name": "Elijah",
+  "user_name": "jajaRamirez",
+  "screen_name": "Eli",
+  "bday": {
+    "$date": "1996-06-15T00:00:00.000Z"
+  },
+  "email": "elijahramirez15@gmail.com",
+  "password": "$2b$10$HK6sdgsVo6qHgl9pBOrN4urs7xoL1wjlk1d3cl96FwWs2AHo8YjjW",
+  "user_avatar": "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg",
+  "isDeleted": false
+}]
