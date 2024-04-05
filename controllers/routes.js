@@ -19,6 +19,8 @@ const bcrypt = require('bcrypt');
 const {validateEmail, validatePassword, allFieldsProvided} = require('./validationHelpers');
 
 const mongoStore = require('connect-mongo');
+const flash = require('connect-flash');
+const passport = require('passport');
 
 function add(server){
     
@@ -31,11 +33,11 @@ function add(server){
             mongoUrl: mongo_uri,
             collectionName: 'sessions'
         }),
-        cookie: { secure: process.env.NODE_ENV === 'production' } // Corrected for secure cookie
+        cookie: { secure: process.env.NODE_ENV === 'production' } 
 
     server.use(passport.initialize());
     server.use(passport.session());
-    server.user(flash());
+     server.use(flash());
 
     function errorFn(err){
         console.log('Error fond. Please trace!');
