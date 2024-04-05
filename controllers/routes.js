@@ -6,6 +6,7 @@ const userModel = database.userModel;
 const restoModel = database.restoModel;
 const resto_reviewModel = database.resto_reviewModel;
 const avatarModel = database.avatarModel;
+const mongo_uri = database.mongo_uri;
 
 //Sessions Code
 const session = require('express-session');
@@ -22,11 +23,20 @@ function add(server){
 
     //Sessions
     server.use(session({
-        secret:'secret-keyyy',
+        secret:'charlizebrodeth',
         resave:false,
         saveUninitialized:false,
+        store: new mongoStore({
+            uri: mongo_uri,
+            collection: 'mySession',
+            expires: 100*60*60
+        }),
         cookie: { secure: false }
     }));
+
+    server.use(passport.initialize());
+    server.use(passport.session());
+    server.user(flash());
 
     function errorFn(err){
         console.log('Error fond. Please trace!');
