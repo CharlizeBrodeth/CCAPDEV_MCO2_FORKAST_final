@@ -19,6 +19,8 @@ const avatarSchema = new mongoose.Schema({
 },{versionKey:false});
 
 
+const mongo_uri = "mongodb+srv://charlizebrodeth:qwerty123@cluster0.hnf9xn8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 //avatar model
 const avatarModel = mongoose.model('avatar', avatarSchema);
 
@@ -68,3 +70,4 @@ module.exports.avatarModel = avatarModel;
 module.exports.userModel = userModel;
 module.exports.resto_reviewModel = resto_reviewModel;
 module.exports.restoModel = restoModel;
+module.exports.mongo_uri = mongo_uri;
