@@ -1,11 +1,16 @@
 //Forkast server side 
 //Install Command:
 //npm init
-//npm i express express-handlebars body-parser mongoose bcrypt express-session
+//
 
 const mongoose = require('mongoose');
 
 const database = require('./models/database');
+
+mongoose.connect('mongodb://127.0.0.1:27017/Forkastdb', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB...'))
+  .catch(err => console.error('Could not connect to MongoDB:', err));
+
 
 const userModel = database.userModel;
 const restoModel = database.restoModel;
@@ -90,6 +95,11 @@ async function importData() {
     }
 }
 importData();
+
+mongoose.connection.once('open', () => {
+    console.log('MongoDB connection open');
+    importData().catch(err => console.error('Error importing data:', err));
+});
 
 
 //Set-up//
