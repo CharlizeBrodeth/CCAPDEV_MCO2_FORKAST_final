@@ -24,16 +24,14 @@ function add(server){
     
     //Sessions
     server.use(session({
-        secret:'charlizebrodeth',
-        resave:false,
-        saveUninitialized:false,
-        store: new mongoStore({
-            uri: mongo_uri,
-            collection: 'mySession',
-            expires: 100*60*60
+        secret: 'charlizebrodeth',
+        resave: false,
+        saveUninitialized: false,
+        store: MongoStore.create({ // Corrected here
+            mongoUrl: mongo_uri,
+            collectionName: 'sessions'
         }),
-        cookie: { secure: false }
-    }));
+        cookie: { secure: process.env.NODE_ENV === 'production' } // Corrected for secure cookie
 
     server.use(passport.initialize());
     server.use(passport.session());
