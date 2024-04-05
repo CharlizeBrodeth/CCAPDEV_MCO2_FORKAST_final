@@ -72,18 +72,6 @@ header {
     background-color: #449D44;
 }
 
-.back-btn {
-    padding: 10px 20px;
-    background-color: #39a7ff;
-    color: white;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin: 10px 0;
-    margin-top: 600px;
-    margin-left: 50%;
-}
-
 /**create review style**/
 .review_body {
     font-family: 'Arial', sans-serif;
