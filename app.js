@@ -3,7 +3,7 @@
 //npm init
 //npm i express express-handlebars body-parser mongoose bcrypt express-session
 
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 const database = require('./models/database');
