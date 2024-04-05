@@ -4,7 +4,7 @@
 //npm i express express-handlebars body-parser mongoose bcrypt express-session
 
 
-const database = require('../models/database');
+const database = require('./models/database');
 
 const userModel = database.userModel;
 const restoModel = database.restoModel;
