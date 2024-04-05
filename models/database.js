@@ -1,7 +1,7 @@
 //Connect to DB//
 const mongoose = require('mongoose');
 //mongoose.connect('mongodb://127.0.0.1:27017/Forkastdb');
-
+mongoose.connect(process.env.MONGODB_URI);
 
 const run = async () => {
     await mongoose.connect("mongodb+srv://charlizebrodeth:qwerty123@cluster0.hnf9xn8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
