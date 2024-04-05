@@ -3,6 +3,7 @@
 //npm init
 //npm i express express-handlebars body-parser mongoose bcrypt express-session
 
+const mongoose = require('mongoose');
 
 const database = require('./models/database');
 
@@ -10,6 +11,8 @@ const userModel = database.userModel;
 const restoModel = database.restoModel;
 const resto_reviewModel = database.resto_reviewModel;
 const avatarModel = database.avatarModel;
+
+
 
 const fs = require('fs/promises');
 async function importData() {
@@ -25,6 +28,33 @@ async function importData() {
         const restaurants = JSON.parse(restoData);
         const reviews = JSON.parse(resto_reviewData);
         const avatars = JSON.parse(avatarData);
+
+        users.forEach(user => {
+            if (user._id && user._id['$oid']) {
+              user._id = new mongoose.Types.ObjectId(user._id['$oid']);
+            }
+            if (user.bday && user.bday['$date']) {
+              user.bday = new Date(user.bday['$date']);
+            }
+          });
+
+        restaurants.forEach(restaurants => {
+            if (restaurants._id && restaurants._id['$oid']) {
+              restaurants._id = new mongoose.Types.ObjectId(restaurants._id['$oid']);
+            }
+          });
+
+        reviews.forEach(reviews => {
+            if (reviews._id && reviews._id['$oid']) {
+              reviews._id = new mongoose.Types.ObjectId(reviews._id['$oid']);
+            }
+          });
+
+        avatars.forEach(avatars => {
+            if (avatars._id && avatars._id['$oid']) {
+              avatars._id = new mongoose.Types.ObjectId(avatars._id['$oid']);
+            }
+          });
     
 
         // Check if data already exists in collections
@@ -34,7 +64,7 @@ async function importData() {
         const existingAvatars = await avatarModel.countDocuments();
        
 
-        // Insert data into MongoDB collections if they don't exist
+        //Insert data into MongoDB collections if they don't exist
         if (existingUsers === 0) {
             await userModel.insertMany(users);
             console.log('User accounts imported');
@@ -54,8 +84,6 @@ async function importData() {
             await avatarModel.insertMany(avatars);
             console.log('Avatars imported');
         }
-
-
         console.log('Data import completed');
     } catch (error) {
         console.error('Error importing data:', error);
